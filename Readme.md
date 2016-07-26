@@ -24,6 +24,17 @@ play
 ~
 ```
 
+# Prérequis
+
+Il est nécessaire de configurer ivy pour accéder au repository local maven.
+Copier le fichier ./conf/ivysettings.xml dans ~/.ivy2/
+
+Ensuite il est possible de résoudre les dépendances :
+Dans le projet ecommerce-maven faire :
+```
+ecommerce-maven/mvn clean install
+```
+
 # Premier usage pour ECommerce
 Récupération des dépendances configurées dans le fichier conf/dependecies.yml
 ```
