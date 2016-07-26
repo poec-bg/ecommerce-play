@@ -13,6 +13,21 @@ import services.ProduitService;
 @With(Secure.class)
 public class Panier extends Controller {
 
+    public static void voirMonPanier() {
+        model.Panier panier = null;
+        Client client = null;
+        try {
+            client = Security.connectedUser();
+            notFoundIfNull(client);
+
+            panier = PanierService.get().getPanier(client);
+            notFoundIfNull(panier);
+        } catch (InvalidArgumentException e) {
+            error(e);
+        }
+        render(panier);
+    }
+
     public static void ajouterAuPanier(String idProduit) {
         Produit produit = null;
         model.Panier panier = null;
@@ -38,19 +53,16 @@ public class Panier extends Controller {
         Application.detailProduit(idProduit);
     }
 
-    public static void voirMonPanier() {
-        model.Panier panier = null;
-        Client client = null;
+    public static void modifierQuantite(String idProduit, Integer quantite) {
         try {
-            client = Security.connectedUser();
-            notFoundIfNull(client);
-
-            panier = PanierService.get().getPanier(client);
-            notFoundIfNull(panier);
+            Client client =Security.connectedUser();
+            Panier panier = PanierService.get().getPanier(client);
+            Produit produit = ProduitService.get().getProduit(idProduit);
+            PanierService.get().ajouterProduit(panier, produit);
         } catch (InvalidArgumentException e) {
-            error(e);
+            e.printStackTrace();
         }
-        render(panier);
+
     }
 
 }
