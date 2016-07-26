@@ -7,6 +7,9 @@ GET     /                                       Application.index
 GET     /produit/{idProduit}                    Application.detailProduit
 
 GET     /admin                                  Admin.index
+GET     /admin/produits                         Admin.produits
+GET     /admin/produits/nouveau                 Admin.creerNouveauProduit
+POST    /admin/produits/nouveau                 Admin.enregistrerNouveauProduit
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
