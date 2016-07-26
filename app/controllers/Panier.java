@@ -1,12 +1,12 @@
 package controllers;
 
 import controllers.secure.Secure;
+import controllers.secure.Security;
 import exceptions.InvalidArgumentException;
 import model.Client;
 import model.Produit;
 import play.mvc.Controller;
 import play.mvc.With;
-import services.ClientService;
 import services.PanierService;
 import services.ProduitService;
 
@@ -21,7 +21,7 @@ public class Panier extends Controller {
             produit = ProduitService.get().getProduit(idProduit);
             notFoundIfNull(produit);
 
-            client = ClientService.get().getClientByEmail("nicolas.giard@coaxys.com");
+            client = Security.connectedUser();
             notFoundIfNull(client);
 
             panier = PanierService.get().getPanier(client);
@@ -42,7 +42,7 @@ public class Panier extends Controller {
         model.Panier panier = null;
         Client client = null;
         try {
-            client = ClientService.get().getClientByEmail("nicolas.giard@coaxys.com");
+            client = Security.connectedUser();
             notFoundIfNull(client);
 
             panier = PanierService.get().getPanier(client);

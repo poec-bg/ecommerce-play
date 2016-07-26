@@ -3,9 +3,9 @@
 # ~~~~
 
 # Secure
-GET	    /login/?			                                               secure.Secure.login
-POST    /login                                                             secure.Secure.authenticate
-GET     /logout/?                                                          secure.Secure.logout
+GET	    /login/?			                    secure.Secure.login
+POST    /login                                  secure.Secure.authenticate
+GET     /logout/?                               secure.Secure.logout
 
 # Home page
 GET     /                                       Application.index
