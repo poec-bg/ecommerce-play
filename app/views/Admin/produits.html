@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'Admin' /}
+
+<a href="@{Admin.index()}">Retour</a>
+
+<ul>
+#{list produits, as:'produit'}
+    <li>${produit.nom} : ${produit.prixUnitaire} €</li>
+#{/list}
+</ul>
+
+<a href="@{Admin.creerNouveauProduit()}">Nouveau Produit</a>

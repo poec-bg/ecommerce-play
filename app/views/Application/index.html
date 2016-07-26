@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<h1>Bienvenue dans l'application ECommerce</h1>
+
+<ul>
+#{list produits, as:'produit'}
+    <li><a href="@{Application.detailProduit(produit.id)}">${produit.nom} : ${produit.prixUnitaire} €</a></li>
+#{/list}
+</ul>
