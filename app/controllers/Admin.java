@@ -31,4 +31,7 @@ public class Admin extends Controller {
         }
         produits();
     }
+//    public static void clients(){
+//        List<Client> clients
+//    }
 }
