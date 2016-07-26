@@ -1,4 +1,17 @@
-<!--#{extends 'main.html' /}-->
-<!--#{set title:'Admin' /}-->
+#{extends 'main.html' /}
+#{set title:'Admin' /}
 
-<!--<a href="@{Admin.index()}">Retour</a>-->
+<a href="@{Admin.index()}">Retour</a>
+
+#{if clients && clients.size() > 0}
+    <ul>
+    #{list clients, as:'client'}
+        <li>${client.prenom} ${client.nom} (${client.email})</li>
+    #{/list}
+    </ul>
+#{/if}
+#{else}
+    <p><i>Aucun client</i></p>
+#{/else}
+
+<a href="@{Admin.creerNouveauClient()}">Nouveau Client</a>

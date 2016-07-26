@@ -3,10 +3,15 @@
 
 <a href="@{Admin.index()}">Retour</a>
 
-<ul>
-#{list produits, as:'produit'}
-    <li>${produit.nom} : ${produit.prixUnitaire} €</li>
-#{/list}
-</ul>
+#{if produits && produits.size() > 0}
+    <ul>
+    #{list produits, as:'produit'}
+        <li>${produit.nom} : ${produit.prixUnitaire} €</li>
+    #{/list}
+    </ul>
+#{/if}
+#{else}
+    <p><i>Aucun produit</i></p>
+#{/else}
 
 <a href="@{Admin.creerNouveauProduit()}">Nouveau Produit</a>

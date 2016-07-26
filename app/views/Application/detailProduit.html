@@ -7,4 +7,6 @@
 <p>${produit.description}</p>
 <p>${produit.prixUnitaire} €</p>
 
-<a href="#">Ajouter au panier</a>
+<a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
+
+<p>${flash.success}</p>
