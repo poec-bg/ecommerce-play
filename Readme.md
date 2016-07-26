@@ -1,11 +1,11 @@
 # Installation
 
-https://www.playframework.com/download#older-versions
-unzip
-création de la variable d'environnement PLAY_HOME
-modification de la variable d'environnement PATH pour ajouter %PLAY_HOME%
+- https://www.playframework.com/download#older-versions
+- unzip
+- Création de la variable d'environnement PLAY_HOME
+- Modification de la variable d'environnement PATH pour ajouter %PLAY_HOME%
 
-ouvrir un powershell et taper
+Ouvrir un powershell et taper
 ```
 play
 ~        _            _
