@@ -1,10 +1,14 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
+#{ifErrors}
+<h1>Oops…</h1>
+#{/ifErrors}
+
 <form action="@{Admin.enregistrerNouveauProduit()}" method="post">
-    <h2>Créer un nouveau Client</h2>
-    <p><label>Nom :</label><input type="text" name="nom"></p>
-    <p><label>Description :</label><input type="text" name="description"></p>
-    <p><label>Prix Unitaire :</label><input type="text" name="prixUnitaire"></p>
+    <h2>Créer un nouveau Produit</h2>
+    <p><label>Nom :</label><input type="text" name="nom"><span class="error">#{error 'nom' /}</span></p>
+    <p><label>Description :</label><input type="text" name="description"><span class="error">#{error 'description' /}</span></p>
+    <p><label>Prix Unitaire :</label><input type="text" name="prixUnitaire"><span class="error">#{error 'prixUnitaire' /}</span></p>
     <p><input type="submit" value="Créer"><a href="@{Admin.produits()}">Annuler</a></p>
 </form>

@@ -4,3 +4,4 @@
 
 validation.required = Champs Requis
 validation.email = Format de l'email invalide
+validation.min = Ne peut être inférieur à %2$s

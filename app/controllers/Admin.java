@@ -6,6 +6,7 @@ import model.Client;
 import model.Produit;
 import play.data.validation.Email;
 import play.data.validation.Error;
+import play.data.validation.Min;
 import play.data.validation.Required;
 import play.mvc.Controller;
 import services.ClientService;
@@ -28,7 +29,13 @@ public class Admin extends Controller {
         render();
     }
 
-    public static void enregistrerNouveauProduit(String nom, String description, float prixUnitaire) {
+    public static void enregistrerNouveauProduit(@Required String nom, @Required String description, @Required @Min(0) Float prixUnitaire) {
+        if (validation.hasErrors()) {
+            params.flash(); // add http parameters to the flash scope
+            validation.keep(); // keep the errors for the next request
+            creerNouveauProduit();
+        }
+
         try {
             Produit produit = ProduitService.get().creer(nom, description, prixUnitaire);
             ProduitService.get().enregistrer(produit);
