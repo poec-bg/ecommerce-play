@@ -3,19 +3,14 @@ package controllers;
 import exceptions.InvalidArgumentException;
 import exceptions.MetierException;
 import model.Client;
-import model.Panier;
 import model.Produit;
-import play.*;
 import play.data.validation.Email;
 import play.data.validation.Required;
-import play.mvc.*;
-
-import java.util.*;
-
-import models.*;
+import play.mvc.Controller;
 import services.ClientService;
-import services.PanierService;
 import services.ProduitService;
+
+import java.util.List;
 
 public class Application extends Controller {
 
