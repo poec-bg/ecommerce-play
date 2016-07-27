@@ -5,6 +5,9 @@
 
 <ul>
 #{list panier.produits, as:'produitPanier'}
-    <li>${produitPanier.produit.nom} x ${produitPanier.quantite}, PU : ${produitPanier.produit.prixUnitaire} €, montant : ${(produitPanier.produit.prixUnitaire * produitPanier.quantite).format("0.##")} €</li>
+    <li><a href="@{Application.detailProduit(produitPanier.produit.id)}">${produitPanier.produit.nom}</a> x ${produitPanier.quantite}, PU : ${produitPanier.produit.prixUnitaire} €, montant : ${(produitPanier.produit.prixUnitaire * produitPanier.quantite).format("0.##")} €
+        <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite - 1)}"> - </a>
+        <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite + 1)}"> + </a>
+        <a href="@{Panier.retirer(produitPanier.produit.id)}" > x </a></li>
 #{/list}
 </ul>

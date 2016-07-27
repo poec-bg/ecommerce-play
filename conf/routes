@@ -11,6 +11,13 @@ GET     /logout/?                               secure.Secure.logout
 GET     /                                       Application.index
 GET     /produit/{idProduit}                    Application.detailProduit
 
+# Panier
+GET     /panier                                                      Panier.voirMonPanier
+GET     /panier/ajouter/{idProduit}                                  Panier.ajouterAuPanier
+GET     /panier/modifier/{idProduit}/quantite/{quantite}             Panier.modifierQuantite
+POST    /panier/modifier/quantite                                    Panier.modifierQuantite
+GET     /panier/retirer/{idProduit}                                  Panier.retirer
+
 # Admin
 GET     /admin                                  Admin.index
 GET     /admin/produits                         Admin.produits
