@@ -7,6 +7,11 @@
 <p>${produit.description}</p>
 <p>${produit.prixUnitaire} €</p>
 
+
+<a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
+
+<a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
+
 <form action="@{Panier.modifierQuantite()}" method="post">
     <input type="hidden" name="idProduit" value="${produit.id}">
     <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
