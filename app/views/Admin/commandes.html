@@ -1,15 +1,13 @@
 #{extends 'main.html' /}
-#{set title:'Mon panier' /}
+#{set title:'Ma Commande' /}
 
-<a href="@{Application.index()}">Retour</a>
+<a href="@{Admin.index()}">Retour</a>
 
 <ul>
-#{list panier.produits, as:'produitPanier'}
+    #{list commandes, as:'produitPanier'}
     <li><a href="@{Application.detailProduit(produitPanier.produit.id)}">${produitPanier.produit.nom}</a> x ${produitPanier.quantite}, PU : ${produitPanier.produit.prixUnitaire} €, montant : ${(produitPanier.produit.prixUnitaire * produitPanier.quantite).format("0.##")} €
         <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite - 1)}"> - </a>
         <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite + 1)}"> + </a>
         <a href="@{Panier.retirer(produitPanier.produit.id)}" > x </a></li>
-#{/list}
+    #{/list}
 </ul>
-
-<a href="@{controllers.Commande.creerCommande()}"> Passer une commande </a>

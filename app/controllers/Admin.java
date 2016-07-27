@@ -11,6 +11,7 @@ import play.data.validation.Required;
 import play.mvc.Controller;
 import services.ClientService;
 import services.ProduitService;
+import services.CommandeService;
 
 import java.util.List;
 
@@ -70,6 +71,13 @@ public class Admin extends Controller {
             error(e);
         }
         clients();
+    }
+
+    public static void commandes(){
+
+        List<Commande> commandes = model.CommandeService.get().lister();
+        render(commandes);
+
     }
 
 }
