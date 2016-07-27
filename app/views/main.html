@@ -9,12 +9,13 @@
     <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
 </head>
 <body>
+
     #{if controllers.secure.Security.isConnected()}
-        <a href="@{Panier.voirMonPanier()}">Voir Panier</a>
-        <a href="@{secure.Secure.logout()}">Se déconnecter</a>
+        <li><a href="@{Panier.voirMonPanier()}">Voir Panier</a></li>
+        <li><a href="@{secure.Secure.logout()}">Se déconnecter</a></li>
     #{/if}
     #{else}
-        <a href="@{secure.Secure.login()}">Se connecter</a>
+        <li><a href="@{secure.Secure.login()}">Se connecter</a></li>
     #{/else}
 
     #{doLayout /}

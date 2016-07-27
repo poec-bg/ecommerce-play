@@ -5,6 +5,7 @@ import controllers.secure.Security;
 import exceptions.InvalidArgumentException;
 import model.Client;
 import model.Produit;
+import model.ProduitPanier;
 import play.mvc.Controller;
 import play.mvc.With;
 import services.PanierService;
@@ -54,15 +55,59 @@ public class Panier extends Controller {
     }
 
     public static void modifierQuantite(String idProduit, Integer quantite) {
+        model.Panier panier = null;
+        Client client = null;
+        Produit produit = null;
         try {
-            Client client =Security.connectedUser();
-            Panier panier = PanierService.get().getPanier(client);
-            Produit produit = ProduitService.get().getProduit(idProduit);
-            PanierService.get().ajouterProduit(panier, produit);
+            client = Security.connectedUser();
+            notFoundIfNull(client);
+
+            panier = PanierService.get().getPanier(client);
+            notFoundIfNull(panier);
+
+            produit = ProduitService.get().getProduit(idProduit);
+
+            if(isProduitDansPanier(panier, produit)) {
+                PanierService.get().modifierQuantite(panier, produit, quantite);
+            } else {
+                PanierService.get().ajouterProduit(panier, produit);
+                PanierService.get().modifierQuantite(panier, produit, quantite);
+            }
         } catch (InvalidArgumentException e) {
-            e.printStackTrace();
+            error(e);
         }
 
+        voirMonPanier();
+    }
+
+    private static boolean isProduitDansPanier(model.Panier panier, final Produit produit) {
+        for (ProduitPanier produitPanier : panier.produits) {
+            if(produitPanier.produit.id.equals(produit.id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void retirer(String idProduit) {
+        model.Panier panier = null;
+        Client client = null;
+        Produit produit = null;
+        try {
+            client = Security.connectedUser();
+            notFoundIfNull(client);
+
+            panier = PanierService.get().getPanier(client);
+            notFoundIfNull(panier);
+
+            produit = ProduitService.get().getProduit(idProduit);
+
+            PanierService.get().retirerProduit(panier, produit);
+        } catch (InvalidArgumentException e) {
+            error(e);
+        }
+
+        voirMonPanier();
     }
 
 }
