@@ -12,6 +12,9 @@
 
     #{if controllers.secure.Security.isConnected()}
         <li><a href="@{Panier.voirMonPanier()}">Voir Panier</a></li>
+        #{if controllers.secure.Security.check("ADMIN")}
+        <li><a href="@{Admin.index()}">Admin</a></li>
+        #{/if}
         <li><a href="@{secure.Secure.logout()}">Se déconnecter</a></li>
     #{/if}
     #{else}

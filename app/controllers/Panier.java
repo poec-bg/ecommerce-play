@@ -1,5 +1,6 @@
 package controllers;
 
+import controllers.secure.Check;
 import controllers.secure.Secure;
 import controllers.secure.Security;
 import exceptions.InvalidArgumentException;
@@ -14,6 +15,7 @@ import services.PanierService;
 import services.ProduitService;
 
 @With(Secure.class)
+@Check({"ADMIN", "CLIENT"})
 public class Panier extends Controller {
 
     public static void voirMonPanier() {
