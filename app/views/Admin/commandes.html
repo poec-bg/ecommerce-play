@@ -1,0 +1,15 @@
+#{extends 'main.html' /}
+#{set title:'Admin' /}
+
+<a href="@{Admin.index()}">Retour</a>
+
+#{if commandes && commandes.size() > 0}
+    <ul>
+    #{list commandes, as:'commande'}
+        <li><a href="@{Admin.commande(commande.id)}">${commande.date.toString("dd/MM/YYYY HH:mm")} / ${commande.client.nom} ${commande.client.prenom} : ${commande.montant} €</a></li>
+    #{/list}
+    </ul>
+#{/if}
+#{else}
+    <p><i>Aucune commande</i></p>
+#{/else}
