@@ -4,10 +4,12 @@ import controllers.secure.Secure;
 import controllers.secure.Security;
 import exceptions.InvalidArgumentException;
 import model.Client;
+import model.Commande;
 import model.Produit;
 import model.ProduitPanier;
 import play.mvc.Controller;
 import play.mvc.With;
+import services.CommandeService;
 import services.PanierService;
 import services.ProduitService;
 
@@ -108,6 +110,28 @@ public class Panier extends Controller {
         }
 
         voirMonPanier();
+    }
+
+    public static void passerCommande() {
+        Client client = null;
+        model.Panier panier = null;
+        try {
+            client = Security.connectedUser();
+            notFoundIfNull(client);
+
+            panier = PanierService.get().getPanier(client);
+            notFoundIfNull(panier);
+
+            Commande commande = CommandeService.get().creerDepuisPanier(panier);
+            CommandeService.get().enregistrer(commande, panier);
+
+        } catch (InvalidArgumentException e) {
+            error(e);
+        }
+
+        flash.success(String.format("Votre commande est bien passée"));
+
+        Application.index();
     }
 
 }

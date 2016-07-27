@@ -3,6 +3,8 @@
 
 <h1>Bienvenue dans l'application ECommerce</h1>
 
+<p>${flash.success}</p>
+
 <ul>
 #{list produits, as:'produit'}
     <li><a href="@{Application.detailProduit(produit.id)}">${produit.nom} : ${produit.prixUnitaire} €</a></li>
