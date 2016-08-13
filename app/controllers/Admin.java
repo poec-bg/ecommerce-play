@@ -2,8 +2,7 @@ package controllers;
 
 import exceptions.InvalidArgumentException;
 import exceptions.MetierException;
-import model.Client;
-import model.Produit;
+import model.*;
 import play.data.validation.Email;
 import play.data.validation.Error;
 import play.data.validation.Min;
@@ -75,7 +74,7 @@ public class Admin extends Controller {
 
     public static void commandes(){
 
-        List<Commande> commandes = model.CommandeService.get().lister();
+        List<model.Commande> commandes = CommandeService.get().lister();
         render(commandes);
 
     }

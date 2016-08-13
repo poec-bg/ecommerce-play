@@ -3,4 +3,4 @@
 require:
     - play
     - org.mindrot -> jbcrypt 0.3m
-    - com.formation -> ecommerce 1.0-SNAPSHOT
+    - com.google.guava -> guava 19.0
