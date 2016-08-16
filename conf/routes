@@ -10,6 +10,7 @@ GET     /logout/?                               secure.Secure.logout
 # Home page
 GET     /                                       Application.index
 GET     /produit/{idProduit}                    Application.detailProduit
+GET     /presentation/?                         Application.presentation
 
 # Panier
 GET     /panier                                                      Panier.voirMonPanier
