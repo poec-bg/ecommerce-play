@@ -1,12 +1,58 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<h1>Bienvenue dans l'application ECommerce</h1>
+
+<ol class="breadcrumb">
+    <li><a href="@{Application.index}">Home</a></li>
+    <li><a href="@{Application.aboutUs}">About us</a></li>
+</ol>
+
+<div class="div">
+    <h1>Title of the page</h1>
+    <p>Description of the main banner</p>
+    <br>
+    <button class="button">Main button</button>
+</div>
+
+
+<table class="div">
+    <tr class="preview">
+        <td class= "td">
+            <img class="image" src="@{'/public/images/chaussures noires.jpg'}">
+        </td>
+        <td class="td">
+            <h3>Title of the preview</h3>
+            <p>Description of the preview</p>
+        </td>
+    </tr>
+    <tr class="preview">
+        <td class="td">
+            <img class="image" src="@{'/public/images/chaussures marrons.jpg'}">
+        </td>
+        <td class="td">
+            <h3>Title of the preview</h3>
+            <p>Description of the preview</p>
+        </td>
+    </tr>
+</table>
+
+<div class="banner">
+    <img class="bannerImage" src="@{'/public/images/banniere.jpg'}">
+    <div class="bannerTitle">
+        <h1>Title of the page</h1>
+        <p>Description of the main banner</p>
+    </div>
+</div>
+
+<footer class="footer">
+    <br>
+    ® 2016 Copyright All rights reserved
+</footer>
 
 <p>${flash.success}</p>
 
 <ul>
-#{list produits, as:'produit'}
+    #{list produits, as:'produit'}
     <li><a href="@{Application.detailProduit(produit.id)}">${produit.nom} : ${produit.prixUnitaire} €</a></li>
-#{/list}
+    #{/list}
 </ul>
