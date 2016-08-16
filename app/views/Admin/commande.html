@@ -1,0 +1,14 @@
+#{extends 'main.html' /}
+#{set title:'Admin' /}
+
+<a href="@{Admin.index()}">Retour</a>
+
+<p>${commande.date.toString("dd/MM/YYYY HH:mm")}</p>
+<p><a href="@{Admin.client(commande.client.id)}">${commande.client.nom} ${commande.client.prenom}</a></p>
+<p>${commande.montant} €</p>
+
+<ul>
+#{list commande.produits, as:'produitCommande'}
+    <li><a href="@{Admin.produit(produitCommande.produit.id)}">${produitCommande.produit.nom}</a> x ${produitCommande.quantite}, PU : ${produitCommande.prixUnitaire} €, montant : ${(produitCommande.prixUnitaire * produitCommande.quantite).format("0.##")} €</li>
+#{/list}
+</ul>

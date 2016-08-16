@@ -22,7 +22,11 @@ public class Security extends Secure.Security {
     }
 
     public static boolean check(String profile) {
-        return true;
+        Client connectedClient = connectedUser();
+        if (profile.equals(connectedClient.role.name())) {
+            return true;
+        }
+        return false;
     }
 
     public static String connected() {

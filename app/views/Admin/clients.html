@@ -6,7 +6,7 @@
 #{if clients && clients.size() > 0}
     <ul>
     #{list clients, as:'client'}
-        <li>${client.prenom} ${client.nom} (${client.email})</li>
+        <li><a href="@{Admin.client(client.id)}">${client.prenom} ${client.nom} (${client.email})</a></li>
     #{/list}
     </ul>
 #{/if}

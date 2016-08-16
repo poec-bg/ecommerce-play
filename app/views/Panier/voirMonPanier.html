@@ -3,13 +3,17 @@
 
 <a href="@{Application.index()}">Retour</a>
 
+#{if panier.produits && panier.produits.size() > 0}
 <ul>
-#{list panier.produits, as:'produitPanier'}
-    <li><a href="@{Application.detailProduit(produitPanier.produit.id)}">${produitPanier.produit.nom}</a> x ${produitPanier.quantite}, PU : ${produitPanier.produit.prixUnitaire} €, montant : ${(produitPanier.produit.prixUnitaire * produitPanier.quantite).format("0.##")} €
-        <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite - 1)}"> - </a>
-        <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite + 1)}"> + </a>
-        <a href="@{Panier.retirer(produitPanier.produit.id)}" > x </a></li>
-#{/list}
+    #{list panier.produits, as:'produitPanier'}
+        <li><a href="@{Application.detailProduit(produitPanier.produit.id)}">${produitPanier.produit.nom}</a> x ${produitPanier.quantite}, PU : ${produitPanier.produit.prixUnitaire} €, montant : ${(produitPanier.produit.prixUnitaire * produitPanier.quantite).format("0.##")} €
+            <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite - 1)}"> - </a>
+            <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite + 1)}"> + </a>
+            <a href="@{Panier.retirer(produitPanier.produit.id)}" > x </a></li>
+    #{/list}
 </ul>
-
-<a href="@{controllers.Commande.creerCommande()}"> Passer une commande </a>
+<a href="@{Panier.passerCommande()}">Passer commande</a>
+#{/if}
+#{else}
+<p><i>Aucun produit dans le panier</i></p>
+#{/else}
