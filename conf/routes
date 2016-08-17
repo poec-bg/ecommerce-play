@@ -3,36 +3,36 @@
 # ~~~~
 
 # Secure
-GET	    /login/?			                    secure.Secure.login
-POST    /login                                  secure.Secure.authenticate
-GET     /logout/?                               secure.Secure.logout
+GET	    /login/?			                                                       secure.Secure.login
+POST    /login                                                                     secure.Secure.authenticate
+GET     /logout/?                                                                  secure.Secure.logout
 
 # Home page
-GET     /                                       Application.index
-GET     /produit/{idProduit}                    Application.detailProduit
-GET     /presentation/?                         Application.presentation
+GET     /                                                                          Application.index
+GET     /produit/{idProduit}                                                       Application.detailProduit
+GET     /presentation/?                                                            Application.presentation
 
 # Panier
-GET     /panier                                                      Panier.voirMonPanier
-GET     /panier/ajouter/{idProduit}                                  Panier.ajouterAuPanier
-GET     /panier/modifier/{idProduit}/quantite/{quantite}             Panier.modifierQuantite
-POST    /panier/modifier/quantite                                    Panier.modifierQuantite
-GET     /panier/retirer/{idProduit}                                  Panier.retirer
+GET     /panier                                                                    Panier.voirMonPanier
+GET     /panier/ajouter/{idProduit}                                                Panier.ajouterAuPanier
+GET     /panier/modifier/{idProduit}/quantite/{quantite}                           Panier.modifierQuantite
+POST    /panier/modifier/quantite                                                  Panier.modifierQuantite
+GET     /panier/retirer/{idProduit}                                                Panier.retirer
 
 # Admin
-GET     /admin                                  Admin.index
-GET     /admin/produits                         Admin.produits
-GET     /admin/produits/nouveau                 Admin.creerNouveauProduit
-POST    /admin/produits/nouveau                 Admin.enregistrerNouveauProduit
-GET     /admin/clients                          Admin.clients
-GET     /admin/clients/nouveau                  Admin.creerNouveauClient
-POST    /admin/clients/nouveau                  Admin.enregistrerNouveauClient
+GET     /admin                                                                     Admin.index
+GET     /admin/produits                                                            Admin.produits
+GET     /admin/produits/nouveau                                                    Admin.creerNouveauProduit
+POST    /admin/produits/nouveau                                                    Admin.enregistrerNouveauProduit
+GET     /admin/clients                                                             Admin.clients
+GET     /admin/clients/nouveau                                                     Admin.creerNouveauClient
+POST    /admin/clients/nouveau                                                     Admin.enregistrerNouveauClient
 
 # Ignore favicon requests
-GET     /favicon.ico                            404
+GET     /favicon.ico                                                               404
 
 # Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
+GET     /public/                                                                   staticDir:public
 
 # Catch all
-*       /{controller}/{action}                  {controller}.{action}
+*       /{controller}/{action}                                                     {controller}.{action}
