@@ -3,14 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Presentation</title>
+    <link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/main.css'}">
 </head>
 <body>
-<nav>
-    <ul>
-        <li>Home</li>
-        <li>About us</li>
-        <li>Contact</li>
-    </ul>
-</nav>
+<header>
+    <div id="nav">
+        <img id="logo" src="@{'/public/images/fox.png'}" alt="LOGO">
+        <nav >
+            <ul id="menu">
+                <li><a href="" title="Home">Home</a> </li>
+                <li><a href="" title="About us">About us</a> </li>
+                <li><a href="" title="Contact">Contact</a> </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div id="blocPrincipal">
+    <div id="filAriane">Home /About us</div>
+    <main id="main">
+        <h1>Title of the page</h1>
+        <p>Description of the main banner</p>
+        <button type="button">Main action</button>
+    </main>
+
+    <section id="previews">
+        <div class="left">
+            <div class="images"><img src="" alt=""></div>
+            <div class="descriptionPreview">
+                <h3>Title of the preview</h3>
+                <p>Descirption of the preview</p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="images"><img src="" alt=""></div>
+            <div class="descriptionPreview">
+                <h3>Title of the preview</h3>
+                <p>Descirption of the preview</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div id="banner">
+    <div id="baniereIntermediaire">
+        <div class="grandeImage"><img src="" alt=""></div>
+        <div>
+            <h3>Title of the page</h3>
+            <p>Decsription of the main banner</p>
+        </div>
+    </div>
+
+</div>
+<footer>&copy;2016 Copyright All rights reserved</footer>
 </body>
 </html>
