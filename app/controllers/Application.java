@@ -51,6 +51,10 @@ public class Application extends Controller {
         Application.index();
     }
 
+    public static void presentation(){
+        render();
+    }
+
 
 
 }
