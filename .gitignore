@@ -28,3 +28,4 @@ atlassian-ide-plugin.xml
 !app/model
 !app/services
 !app/validators
+!public/lib
