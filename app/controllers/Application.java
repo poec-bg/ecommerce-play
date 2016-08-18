@@ -52,7 +52,12 @@ public class Application extends Controller {
     }
 
     public static void presentation(){
-        render();
+        renderTemplate("Application/presentation-responsive.html");
+    }
+
+    public static void getAsyncPresentationMessage(String name, String signature){
+        String videoCode = "1NKWop13q7I";
+        renderTemplate("tags/presentation-message.html", name, signature);
     }
 
 
