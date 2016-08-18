@@ -1,21 +1,54 @@
 #{extends 'main.html' /}
 #{set title:'Détail Produit' /}
 
-<a href="@{Application.index()}">Retour</a>
+<nav id="breadcrumb">
+    <meta itemprop="url" content="http://my-site.com/about-us">
+    <div class="container">
+        <ol class="list-unstyled" id="breadcrumb-list" itemscope itemtype="http://schema.org/BreadcrumbList">
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <a class="breadcrumb-link" href="@{Application.index()}" itemprop="item"><span itemprop="name">Retour</span></a>
+                <meta itemprop="position" content="1" />
+            </li>
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <a class="breadcrumb-link" href="http://codepen.io/" target="_blank" itemprop="item"><span itemprop="name">About us</span></a>
+                <meta itemprop="position" content="2" />
+            </li>
+        </ol>
+    </div>
+</nav>
 
-<p>${produit.nom}</p>
-<p>${produit.description}</p>
-<p>${produit.prixUnitaire} €</p>
+<main>
+    <div class="container">
+        <article class="main-article">
+            <div class="images">
+                <div class="grande-image">
+                    <span class="img">&nbsp;</span>
+                </div>
+                <div class="petites-images">
+                    <span class="img">&nbsp;</span>
+                    <span class="img">&nbsp;</span>
+                    <span class="img">&nbsp;</span>
+                </div>
+            </div>
+            <div class="description-produit">
+                <div class="desciption-produit-titre">${produit.nom}</div>
+                <div class="desciption-produit-description">${produit.description}</div>
+                <div class="desciption-produit-prixUnitaire">${produit.prixUnitaire}</div>
+            </div>
+        </article>
+    </div>
 
 
-<a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
 
-<a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
+    <a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
 
-<form action="@{Panier.modifierQuantite()}" method="post">
-    <input type="hidden" name="idProduit" value="${produit.id}">
-    <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
-    <p><input type="submit" value="Ajouter au Panier"></p>
-</form>
+    <a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
 
-<p>${flash.success}</p>
+    <form action="@{Panier.modifierQuantite()}" method="post">
+        <input type="hidden" name="idProduit" value="${produit.id}">
+        <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
+        <p><input type="submit" value="Ajouter au Panier"></p>
+    </form>
+
+    <p>${flash.success}</p>
+</main>
