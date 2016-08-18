@@ -4,7 +4,7 @@
 <nav id="breadcrumb">
     <meta itemprop="url" content="http://my-site.com/about-us">
     <div class="container">
-        <ol class="list-unstyled" id="breadcrumb-list" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <ol class="breadcrumb" id="breadcrumb-list" itemscope itemtype="http://schema.org/BreadcrumbList">
             <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
                 <a class="breadcrumb-link" href="@{Application.index()}" itemprop="item"><span itemprop="name">Retour</span></a>
                 <meta itemprop="position" content="1" />
@@ -22,18 +22,31 @@
         <article class="main-article">
             <div class="images">
                 <div class="grande-image">
-                    <span class="img">&nbsp;</span>
+                    <img src="http://cdn.cnetcontent.com/de/f2/def23662-86a3-4232-9427-5772440d7be8.jpg" class="img-responsive" alt="Responsive image">
                 </div>
-                <div class="petites-images">
-                    <span class="img">&nbsp;</span>
-                    <span class="img">&nbsp;</span>
-                    <span class="img">&nbsp;</span>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail">
+                        <img src="..." alt="...">
+                    </a>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail">
+                        <img src="..." alt="...">
+                    </a>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail">
+                        <img src="..." alt="...">
+                    </a>
+                </div>
                 </div>
             </div>
             <div class="description-produit">
                 <div class="desciption-produit-titre">${produit.nom}</div>
                 <div class="desciption-produit-description">${produit.description}</div>
-                <div class="desciption-produit-prixUnitaire">${produit.prixUnitaire}</div>
+                <div class="desciption-produit-prixUnitaire">${produit.prixUnitaire} €</div>
             </div>
         </article>
     </div>
