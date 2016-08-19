@@ -22,10 +22,10 @@
         <div class="main">
             <article class="main-article border">
                 <div class="images border">
-                    <div class="grande-image">
-                        <img src="http://cdn.cnetcontent.com/de/f2/def23662-86a3-4232-9427-5772440d7be8.jpg" class="img-responsive grande-image" alt="Responsive image">
+                    <div class="grande-image decale">
+                        <img src="@{'/public/images/intercallaire-1.jpg'}" class="img-responsive grande-image" alt="Responsive image">
                     </div>
-                    <div>
+                    <div class="decale">
                         <ul class="row decale">
                             <li class="col-md-1 vignette">
                                 <a href="#" class="thumbnail">
@@ -54,27 +54,44 @@
                 </div>
             </article>
             <aside class="pull-right border taille">
-                <div class="desciption-produit-prixUnitaire">Prix : ${produit.prixUnitaire} €</div>
+                <div class="desciption-produit-prixUnitaire decale">Prix : ${produit.prixUnitaire} €</div>
                 <div class="separateur">&nbsp;</div>
-                <div>
+                <div class="decale">
                     <a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
                     <a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
                     <form action="@{Panier.modifierQuantite()}" method="post">
                         <input type="hidden" name="idProduit" value="${produit.id}">
-                        <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
+                        <p><!--<label>Quantité : </label>--><input class="form-control text-control-quantite" type="number" name="quantite" placeholder="Quantité" value="1" min="1"></p>
                         <p><input type="submit" value="Ajouter au Panier" class="btn btn-primary"></p>
                     </form>
                 </div>
                 <div class="separateur">&nbsp;</div>
-                <div>Moyens de paiment accept&eacute;s : </div>
-                <div>
-                    <img src="@{'/public/images/site-securise.jpg'}" alt="site securise" width="50">
+                <div class="decale">Moyens de paiment accept&eacute;s : </div>
+                <div class="decale">
                     <img src="@{'/public/images/cartes_credits.jpg'}" alt="cartes de credits" width="150">
                     <img src="@{'/public/images/paypal.jpg'}" alt="paypal" width="50">
                 </div>
+                <div class="separateur">&nbsp;</div>
+                <div class="decale">Site s&eacute;curis&eacute; : </div>
+                <div class="decale">
+                    <img src="@{'/public/images/site-securise.jpg'}" alt="site securise" width="50">
+                </div>
             </aside>
         </div>
+        <div class="separateur">&nbsp;</div>
+        <!-- Avis Clients -->
+        <div class="container">
+            <div>Avis des utilisateurs</div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ipsos secum cum quas videretur.</h3>
+                </div>
+                <div class="panel-body">
+                    Utque proeliorum periti rectores primo catervas densas opponunt et fortes, deinde leves armaturas, post iaculatores ultimasque subsidiales acies, si fors adegerit, iuvaturas, ita praepositis urbanae familiae suspensae digerentibus sollicite, quos insignes faciunt virgae dexteris aptatae velut tessera data castrensi iuxta vehiculi frontem omne textrinum incedit: huic atratum coquinae iungitur ministerium, dein totum promiscue servitium cum otiosis plebeiis de vicinitate coniunctis: postrema multitudo spadonum a senibus in pueros desinens, obluridi distortaque lineamentorum conpage deformes, ut quaqua incesserit quisquam cernens mutilorum hominum agmina detestetur memoriam Samiramidis reginae illius veteris, quae teneros mares castravit omnium prima velut vim iniectans naturae, eandemque ab instituto cursu retorquens, quae inter ipsa oriundi crepundia per primigenios seminis fontes tacita quodam modo lege vias propagandae posteritatis ostendit.
+                </div>
+            </div>
 
+        </div>
     </div>
     <p>${flash.success}</p>
 </main>
