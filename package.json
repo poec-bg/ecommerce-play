@@ -1,0 +1,17 @@
+{
+  "name": "m2i",
+  "title": "m2i",
+  "version": "1.0.0",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "0.5.1",
+    "grunt-contrib-cssmin": "0.12.3",
+    "grunt-contrib-stylus": "0.21.0",
+    "grunt-contrib-uglify": "0.9.1",
+    "grunt-contrib-watch": "0.6.1",
+    "rupture": "latest",
+    "grunt-babel" : "6.0.0",
+    "babel-preset-stage-3": "6.11.0",
+    "grunt-browser-sync": "2.2.0"
+  }
+}

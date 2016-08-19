@@ -1,0 +1,34 @@
+@import 'nib'
+
+/* ==========================================================================
+  GLOBAL
+========================================================================== */
+
+global-reset()
+typographic()
+
+*
+  box-sizing border-box
+
+.clearfix:after, .clearfix:before, .container:after, .container:before,
+.form-horizontal .form-group:after, .form-horizontal .form-group:before,
+.modal-footer:after, .modal-footer:before, .nav:after, .nav:before,
+.pager:after, .pager:before, .panel-body:after, .panel-body:before
+  display table
+  content " "
+  clear both
+
+html
+  line-height $line-height-ratio
+
+body
+  background #fff
+  font-family $body-font
+  color $body-color
+  font-size 100%
+  font-smoothing: antialiased
+  overflow-x hidden
+  width 100%
+  height 100%
+  line-height $line-height-ratio
+  word-wrap break-word
