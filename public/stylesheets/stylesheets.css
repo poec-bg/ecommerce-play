@@ -96,6 +96,15 @@ p{
     right: 16px;
 }
 
+.Burger{
+    border: none;
+    font-size:24px;
+    text-align: center;
+    background-color:#acd4d3;
+    color: white;
+    width: 100%;
+}
+
 .main-nav-item{
     display: inline-block;
 }
@@ -126,6 +135,16 @@ p{
     height: 44px;
 }
 
+
+@media only screen and (max-width: 768px){
+    .Burger {display: inline-block;}
+    #main-nav-list {display: none;}
+}
+
+@media only screen and (min-width: 768px){
+    .Burger {display: none;}
+    #main-nav-list {display: inline;}
+}
 /* ==========================================================================
   MAIN
 ========================================================================== */
@@ -133,6 +152,7 @@ p{
 #page-content{
     flex: 1;
 }
+
 
 /* ==========================================================================
   BREADCRUMB
@@ -193,6 +213,9 @@ p{
     margin-bottom: 1em;
 }
 
+@media only screen and (max-width: 768px){
+    .main-article{text-align: center;}
+}
 /* ==========================================================================
   CONTENT
 ========================================================================== */

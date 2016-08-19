@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import static play.libs.F.Matcher.String;
+
 public class DBService {
 
     private static DBService instance;
@@ -14,8 +16,8 @@ public class DBService {
     private DBService() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String ip = "10.110.10.26:3306";
-            connection = DriverManager.getConnection("jdbc:mysql://" + ip + "/lenaick?user=root&password=formation&useSSL=false");
+            String ip = "10.110.10.30:3306";
+            connection = DriverManager.getConnection("jdbc:mysql://" + ip + "/aime?user=root&password=formation&useSSL=false");
             System.out.println("Connection OK");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Pas de connection possible à la base de données");

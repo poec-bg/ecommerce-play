@@ -1,21 +1,71 @@
 #{extends 'main.html' /}
 #{set title:'Détail Produit' /}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/detailProduit.css'}">
 
-<a href="@{Application.index()}">Retour</a>
+<div class="produit col-xs-12 col-sm-9">
+    <img src="@{'/public/images/boulierchinoisbig.jpg'}" class="img-responsive produit-img col-xs-12 col-sm-6" alt="image du produit">
+    <div class="col-xs-12 col-sm-6">
+        <h3 class="produit-nom">${produit.nom}</h3>
+        <p class="produit-desc">Description : ${produit.description}</p>
+        <p class="produit-gar">Garantie : aucune.</p>
+        <p class="produit-pu">Prix unitaire : ${produit.prixUnitaire} €</p>
+    </div>
+</div>
 
-<p>${produit.nom}</p>
-<p>${produit.description}</p>
-<p>${produit.prixUnitaire} €</p>
+<!--Panel ajout panier (info payment, livraison, promo)-->
+<!--<a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>-->
+<!--<a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>-->
+<div class="col-xs-11 col-sm-2 panel panel-primary">
+    #{if true}
+    <p class="text-danger"> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> En promotion jusqu'au 30 septembre 2016 !</p>
+    #{/if}
+    #{if true}
+        <p class="text-success"> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  En stock.</p>
+    #{/if}
+    #{else}
+        <p class="text-danger"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Indisponible pour le moment.</p>
+    #{/else}
+    <p class="text-info"> <span class="glyphicon glyphicon-send" aria-hidden="true"></span>  Livraison sous 48h.</p>
+    <form  class="form-horizontal" action="@{Panier.modifierQuantite()}" method="post">
+        <div class="form-group form-group-sm">
+            <input type="hidden" name="idProduit" value="${produit.id}">
+            <label  class="col-xs-5 control-label" for="formAddNb">Quantité :</label>
+            <div class="col-xs-7">
+                <input class="form-control" type="number" name="quantite" value="1" min="1" id="formAddNb">
+            </div>
+        </div>
+        <p><input type="submit" value="Ajouter au Panier"></p>
+    </form>
 
-
-<a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
-
-<a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
-
-<form action="@{Panier.modifierQuantite()}" method="post">
-    <input type="hidden" name="idProduit" value="${produit.id}">
-    <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
-    <p><input type="submit" value="Ajouter au Panier"></p>
-</form>
+    <p>Payments disponibles : <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> <span class="glyphicon glyphicon-gbp" aria-hidden="true"></span></p>
+</div>
 
 <p>${flash.success}</p>
+
+
+<!--avis utilisateur-->
+<div class="col-xs-12 panel panel-default">
+    <h4 class="panel-heading ">Avis des clients :</h4>
+    <table  class="table table-striped">
+        <tr>
+            <td>Client N°1</td>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam enim justo, facilisis at nisi ut, ornare congue velit. Nulla pharetra et massa ac dapibus. Nunc consectetur turpis vitae semper lacinia. In ac pharetra nisi. Mauris in massa ex. Sed mattis ligula non magna facilisis luctus. Sed tellus lectus, egestas a sem tincidunt, viverra tristique risus. Nam maximus est nec sem placerat, in pretium leo volutpat.</td>
+        </tr>
+        <tr>
+            <td>Client N°2</td>
+            <td>Vestibulum imperdiet tortor vel nibh gravida imperdiet. Fusce efficitur felis vitae ligula malesuada porta. Fusce augue quam, accumsan at risus sed, consequat fringilla libero. </td>
+        </tr>
+        <tr class="avisClients-lg">
+            <td class="avisClients-idClient">Client N°3</td>
+            <td class="avisClients-item">Nullam finibus enim vitae malesuada malesuada. In bibendum libero sed nisi finibus, quis sagittis tellus molestie. Ut bibendum luctus metus in iaculis. Sed leo neque, commodo eu condimentum sed, dapibus a nisi. Morbi luctus cursus sapien, vel lacinia lectus commodo quis. Duis sodales maximus pellentesque. </td>
+        </tr>
+        <tr>
+            <td>Client Pierre-martin de la vigne</td>
+            <td>Maecenas in porttitor lectus. Nullam in rutrum risus. Sed vehicula non quam vel condimentum. Ut vestibulum tristique felis, et bibendum metus sollicitudin nec.</td>
+        </tr>
+        <tr>
+            <td>Client N°5</td>
+            <td>Sed at metus id lorem porttitor dapibus. Etiam accumsan quam vel mi pellentesque cursus ut nec metus. Etiam tempor massa erat, non sagittis est laoreet ut. Donec ut metus fringilla, cursus urna non, auctor justo. Maecenas efficitur malesuada libero consectetur iaculis.</td>
+        </tr>
+    </table>
+</div>
