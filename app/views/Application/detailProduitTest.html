@@ -69,40 +69,40 @@
 <!--header!-->
 
 <div class="jumbotron">
+    <div class="clearfix">
+    <div class="container col-xs-8 ">
+        <h1>${produit.nom}</h1>
 
-        <div class="container col-xs-8">
-            <h1>${produit.nom}</h1>
+        <img data-holder-rendered="true" src="http://ichef.bbci.co.uk/news/624/cpsprodpb/0FFB/production/_88819040_85eb06a1-3986-45b9-af28-20783f938751.jpg" class="shadow" width="460" height="215" ></p>
+    </div>
 
-                <img data-holder-rendered="true" src="http://ichef.bbci.co.uk/news/624/cpsprodpb/0FFB/production/_88819040_85eb06a1-3986-45b9-af28-20783f938751.jpg" class="shadow" width="460" height="215" ></p>
-        </div>
-
-        <div class="well col-xs-4 wrapEllipse">
-            <h2>Description</h2>
-            <p>${produit.description}</p>
-            <p>${produit.prixUnitaire} €</p>
-
-
-            <form action="@{Panier.modifierQuantite()}" method="post">
-                <input type="hidden" name="idProduit" value="${produit.id}">
-                <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
-                <p><input type="submit" value="Ajouter au Panier"></p>
-            </form>
+    <div class="well col-xs-4 wrapEllipse ">
+        <h2>Description</h2>
+        <p>${produit.description}</p>
+        <p>${produit.prixUnitaire} €</p>
 
 
+        <form action="@{Panier.modifierQuantite()}" method="post">
+            <input type="hidden" name="idProduit" value="${produit.id}">
+            <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
+            <p><input type="submit" value="Ajouter au Panier"></p>
+        </form>
 
 
 
 
-        </div>
 
 
-<div class="left">
+    </div>
+
+
+    <div class="container col-xs-8 ">
     <iframe width="460" height="215" src="https://www.youtube.com/embed/ejVe_VHZJ6Y" frameborder="0" allowfullscreen></iframe>
+    </div>
+    </div>
 </div>
 
-</div>
 
-</div>
 
 <div class="container">
     <!-- Example row of columns -->

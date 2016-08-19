@@ -55,9 +55,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
 
-                <li><a href="#contact">Contact</a></li>
 
-                <li><a href="@{Application.index()}">Retour</a></li>
                 #{if controllers.secure.Security.isConnected()}
                 <li><a href="@{Panier.voirMonPanier()}">Voir Panier</a></li>
                 #{if controllers.secure.Security.check("ADMIN")}
@@ -68,7 +66,9 @@
                 #{else}
                 <li><a href="@{secure.Secure.login()}">Se connecter</a></li>
                 #{/else}
+                <li><a href="#contact">Contact</a></li>
 
+                <li><a href="@{Application.index()}">Retour</a></li>
 
 
             </ul>
@@ -91,7 +91,6 @@
 
 
 
-<!--<script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>-->
 #{get 'moreScripts' /}
 </body>
 
