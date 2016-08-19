@@ -15,6 +15,7 @@ public class DBService {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String ip = System.getenv().get("DB_IP");
+            System.out.println("IP => " + ip);
             if (ip.equals("") || ip == null) {
                 ip = "10.110.10.26:3306";
             }
