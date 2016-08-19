@@ -14,8 +14,10 @@ public class DBService {
     private DBService() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-//            String ip = "10.110.10.26:3306";
-            String ip = "192.168.1.6:3306";
+            String ip = System.getenv().get("DB_IP");
+            if (ip.equals("") || ip == null) {
+                ip = "10.110.10.26:3306";
+            }
             connection = DriverManager.getConnection("jdbc:mysql://" + ip + "/lenaick?user=root&password=formation&useSSL=false");
             System.out.println("Connection OK");
         } catch (ClassNotFoundException | SQLException e) {

@@ -10,7 +10,7 @@
                 <meta itemprop="position" content="1" />
             </li>
             <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                <a class="breadcrumb-link" href="http://codepen.io/" target="_blank" itemprop="item"><span itemprop="name">About us</span></a>
+                <a class="breadcrumb-link" href="http://codepen.io/" target="_blank" itemprop="item"><span itemprop="name">${produit.nom}</span></a>
                 <meta itemprop="position" content="2" />
             </li>
         </ol>
@@ -19,49 +19,62 @@
 
 <main>
     <div class="container">
-        <article class="main-article">
-            <div class="images">
-                <div class="grande-image">
-                    <img src="http://cdn.cnetcontent.com/de/f2/def23662-86a3-4232-9427-5772440d7be8.jpg" class="img-responsive" alt="Responsive image">
+        <div class="main">
+            <article class="main-article border">
+                <div class="images border">
+                    <div class="grande-image">
+                        <img src="http://cdn.cnetcontent.com/de/f2/def23662-86a3-4232-9427-5772440d7be8.jpg" class="img-responsive grande-image" alt="Responsive image">
+                    </div>
+                    <div>
+                        <ul class="row decale">
+                            <li class="col-md-1 vignette">
+                                <a href="#" class="thumbnail">
+                                    <img src="..." alt="...">
+                                </a>
+                            </li>
+                            <li class="col-md-1 vignette">
+                                <a href="#" class="thumbnail">
+                                    <img src="..." alt="...">
+                                </a>
+                            </li>
+                            <li class="col-md-1 vignette">
+                                <a href="#" class="thumbnail">
+                                    <img src="..." alt="...">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="..." alt="...">
-                    </a>
+                <div class="description-produit border">
+                    <div class="desciption-produit-titre">${produit.nom}</div>
+                    <div class="desciption-produit-description">${produit.description}</div>
+                    <div class="desciption-produit-description">Adolescebat autem obstinatum propositum erga haec et similia multa scrutanda, stimulos admovente regina, quae abrupte mariti fortunas trudebat in exitium praeceps, cum eum potius lenitate feminea ad veritatis humanitatisque viam reducere utilia suadendo deberet, ut in Gordianorum actibus factitasse Maximini truculenti illius imperatoris rettulimus coniugem.</div>
+
+                    <div class="texte-important-succes">En stock</div>
                 </div>
-                <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="..." alt="...">
-                    </a>
+            </article>
+            <aside class="pull-right border taille">
+                <div class="desciption-produit-prixUnitaire">Prix : ${produit.prixUnitaire} €</div>
+                <div class="separateur">&nbsp;</div>
+                <div>
+                    <a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
+                    <a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
+                    <form action="@{Panier.modifierQuantite()}" method="post">
+                        <input type="hidden" name="idProduit" value="${produit.id}">
+                        <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
+                        <p><input type="submit" value="Ajouter au Panier"></p>
+                    </form>
                 </div>
-                <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="..." alt="...">
-                    </a>
+                <div class="separateur">&nbsp;</div>
+                <div>Moyens de paiment accept&eacute;s : </div>
+                <div>
+                    <img src="@{'/public/images/site-securise.jpg'}" alt="site securise" width="50">
+                    <img src="@{'/public/images/cartes_credits.jpg'}" alt="cartes de credits" width="150">
+                    <img src="@{'/public/images/paypal.jpg'}" alt="paypal" width="50">
                 </div>
-                </div>
-            </div>
-            <div class="description-produit">
-                <div class="desciption-produit-titre">${produit.nom}</div>
-                <div class="desciption-produit-description">${produit.description}</div>
-                <div class="desciption-produit-prixUnitaire">${produit.prixUnitaire} €</div>
-            </div>
-        </article>
+            </aside>
+        </div>
+
     </div>
-
-
-
-    <a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
-
-    <a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
-
-    <form action="@{Panier.modifierQuantite()}" method="post">
-        <input type="hidden" name="idProduit" value="${produit.id}">
-        <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
-        <p><input type="submit" value="Ajouter au Panier"></p>
-    </form>
-
     <p>${flash.success}</p>
 </main>

@@ -8,7 +8,7 @@
     #{get 'moreStyles' /}
     <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!--<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/stylesheets.css'}">-->
+    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/detailProduit.css'}">
 </head>
 <body>
     <header id="header" class="clearfix" role="banner">
@@ -32,12 +32,12 @@
     </header>
 
     #{doLayout /}
-    <footer id="footer">
-        <div id="footer-content" class="container">
-            <small>Copyright ©2016 My Site | All rights reserved</small>
+    <footer class="footer">
+        <div class="footer-container">
+            <small class="text-muted">Copyright ©2016 My Site | All rights reserved</small>
         </div>
     </footer>
-    <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+    <script src="@{'/public/javascripts/jquery-1.12.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     #{get 'moreScripts' /}
 </body>
