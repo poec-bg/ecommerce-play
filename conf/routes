@@ -37,3 +37,6 @@ GET     /public/                                                                
 
 # Catch all
 *       /{controller}/{action}                                                     {controller}.{action}
+
+# detailProduit
+GET     /detailProduitTest/?                                                            Application.detailProduitTest

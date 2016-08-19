@@ -51,7 +51,7 @@ public class Panier extends Controller {
     public static void ajouterAuPanier(String idProduit) {
         ajouterAuPanierEnNormalOuJson(idProduit);
         flash.success("Le produit a bien été ajouté à votre panier");
-        Application.detailProduit(idProduit);
+        Application.detailProduitTest(idProduit);
     }
 
     public static void ajouterAuPanierJson(String idProduit) {

@@ -143,8 +143,10 @@ p{
 }
 
 .breadcrumb-item{
+
     display: inline-block;
 }
+
 
 .breadcrumb-item:after {
     display: inline-block;
@@ -286,4 +288,19 @@ p{
 
 #footer-content{
     margin: 16px auto;
+}
+
+     .visible-small{
+     display: none;}
+
+     .visible-large{
+     display: visible;}
+
+    @media all and (max-width:600px){
+    .visible-small{
+     display: visible;
+}
+    .visible-large{
+    display: none;}
+
 }

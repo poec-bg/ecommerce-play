@@ -60,6 +60,20 @@ public class Application extends Controller {
         renderTemplate("tags/presentation-message.html", name, signature);
     }
 
+//    public static void detailProduitTest(){
+//        renderTemplate("Application/detailProduitTest.html");
+//    }
 
-
+    public static void detailProduitTest(String idProduit) {
+        Produit produit = null;
+        try {
+            produit = ProduitService.get().getProduit(idProduit);
+            notFoundIfNull(produit);
+        } catch (InvalidArgumentException e) {
+            error(e);
+        }
+        render(produit);
+    }
+//
 }
+

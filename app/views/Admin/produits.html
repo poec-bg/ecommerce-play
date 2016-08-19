@@ -6,7 +6,7 @@
 #{if produits && produits.size() > 0}
     <ul>
     #{list produits, as:'produit'}
-        <li><a href="@{Admin.produit(produit.id)}">${produit.nom}</a> : ${produit.prixUnitaire} €</li>
+        <li><a href="@{Application.detailProduitTest(produit.id)}">${produit.nom}</a> : ${produit.prixUnitaire} €</li>
     #{/list}
     </ul>
 #{/if}
