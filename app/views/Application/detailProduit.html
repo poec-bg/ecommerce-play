@@ -29,17 +29,17 @@
                         <ul class="row decale">
                             <li class="col-md-1 vignette">
                                 <a href="#" class="thumbnail">
-                                    <img src="..." alt="...">
+                                    <img src="@{'/public/images/intercallaire-1.jpg'}" alt="...">
                                 </a>
                             </li>
                             <li class="col-md-1 vignette">
                                 <a href="#" class="thumbnail">
-                                    <img src="..." alt="...">
+                                    <img src="@{'/public/images/intercallaire-2.jpg'}" alt="...">
                                 </a>
                             </li>
                             <li class="col-md-1 vignette">
                                 <a href="#" class="thumbnail">
-                                    <img src="..." alt="...">
+                                    <img src="@{'/public/images/intercallaire-3.jpg'}" alt="...">
                                 </a>
                             </li>
                         </ul>
@@ -62,7 +62,7 @@
                     <form action="@{Panier.modifierQuantite()}" method="post">
                         <input type="hidden" name="idProduit" value="${produit.id}">
                         <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
-                        <p><input type="submit" value="Ajouter au Panier"></p>
+                        <p><input type="submit" value="Ajouter au Panier" class="btn btn-primary"></p>
                     </form>
                 </div>
                 <div class="separateur">&nbsp;</div>
