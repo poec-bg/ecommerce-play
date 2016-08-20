@@ -52,9 +52,9 @@ module.exports = function(grunt) {
                     "spawn": "false"
                 }
             },
-            babel:{
+            browserify:{
                 files: ['public/javascripts/es6/*.es6'],
-                tasks: ['babel']
+                tasks: ['browserify']
             }
         },
 
@@ -101,26 +101,16 @@ module.exports = function(grunt) {
             }
         },
 
-        babel: {
-            options: {
-                sourceMap: false,
-                presets: ["stage-3"],
-                "plugins": [
-                    ["transform-es2015-modules-commonjs", {
-                        "allowTopLevelThis": false,
-                        "strict": false,
-                        "loose": false
-                    }]
-                ]
-            },
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'public/javascripts/es6/',
-                    src: ['**/*.es6'],
-                    dest: 'public/javascripts/',
-                    ext: '.js'
-                }]
+        browserify: {
+            development: {
+                src: [
+                    "public/javascripts/es6/*.es6"
+                ],
+                dest: 'public/javascripts/intro.js',
+                options: {
+                    browserifyOptions: { debug: true },
+                    transform: [["babelify", { "presets": ["es2015", "stage-3"] , "plugins": [ "transform-runtime"]}]]
+                }
             }
         }
     });
@@ -131,7 +121,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-browser-sync');
-    grunt.loadNpmTasks('grunt-babel');
+    grunt.loadNpmTasks('grunt-browserify');
 
     grunt.registerTask('default', [ 'concat:cssLib', 'concat:jsLib', 'concat:css', 'cssmin:css', 'concat:js', 'uglify:js']);
     grunt.registerTask('dev', [ 'watch']);
