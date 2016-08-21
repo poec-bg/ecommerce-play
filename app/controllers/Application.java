@@ -15,7 +15,7 @@ import java.util.List;
 public class Application extends Controller {
 
     public static void index() {
-        List<Produit> produits = null;
+        List<Produit> produits = ProduitService.get().lister();
         render(produits);
     }
 
