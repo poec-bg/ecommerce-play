@@ -30,3 +30,4 @@ node_modules
 !app/services
 !app/validators
 !public/lib
+!test/features/report

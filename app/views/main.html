@@ -22,10 +22,10 @@
         #{if controllers.secure.Security.check("ADMIN")}
         <li><a href="@{Admin.index()}">Admin</a></li>
         #{/if}
-        <li><a href="@{secure.Secure.logout()}">Se déconnecter</a></li>
+        <li><a class="login-link" href="@{secure.Secure.logout()}">Se déconnecter</a></li>
     #{/if}
     #{else}
-        <li><a href="@{secure.Secure.login()}">Se connecter</a></li>
+        <li><a class="login-link" href="@{secure.Secure.login()}">Se connecter</a></li>
     #{/else}
 
     #{doLayout /}

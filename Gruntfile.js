@@ -112,6 +112,74 @@ module.exports = function(grunt) {
                     transform: [["babelify", { "presets": ["es2015", "stage-3"] , "plugins": [ "transform-runtime"]}]]
                 }
             }
+        },
+
+        nightwatch: {
+            options: {
+                // task options
+                standalone: true,
+
+                // download settings
+                jar_version: '2.53.1',
+                jar_path: 'test/selenium/selenium-server-standalone-2.53.1.jar',
+
+                // nightwatch settings
+                globals: { foo: 'bar' },
+                src_folders: ['test/features/nightwatch'],
+                output_folder: 'test/features/report',
+
+                // YOU HAVE TO DOWNLOAD THE DRIVERS => http://www.seleniumhq.org/download/
+                test_settings: {
+                    firefox: {
+                        "desiredCapabilities": {
+                            "browserName": "firefox"
+                        }
+                    },
+                    phantom: {
+                        "desiredCapabilities": {
+                            "browserName": "phantomjs",
+                            "phantomjs.binary.path": "test/selenium/phantomjs/windows/phantomjs.exe"
+                        }
+                    },
+                    phantomMAC: {
+                        "desiredCapabilities": {
+                            "browserName": "phantomjs",
+                            "phantomjs.binary.path": "test/selenium/phantomjs/mac/phantomjs"
+                        }
+                    },
+                    phantomLinux: {
+                        "desiredCapabilities": {
+                            "browserName": "phantomjs",
+                            "phantomjs.binary.path": "test/selenium/phantomjs/linux/phantomjs"
+                        }
+                    },
+                    chrome: {
+                        "desiredCapabilities": {
+                            "browserName": "chrome"
+                        },
+                        "cli_args" : {
+                            "webdriver.chrome.driver" : "test/selenium/chromedriver/windows/chromedriver.exe"
+                        }
+                    },
+                    chromeMAC: {
+                        "desiredCapabilities": {
+                            "browserName": "chrome"
+                        },
+                        "cli_args" : {
+                            "webdriver.chrome.driver" : "test/selenium/chromedriver/mac/chromedriver"
+                        }
+                    },
+                    chromelinux: {
+                        "desiredCapabilities": {
+                            "browserName": "chrome"
+                        },
+                        "cli_args" : {
+                            "webdriver.chrome.driver" : "test/selenium/chromedriver/linux/chromedriver"
+                        }
+                    }
+                },
+                selenium: {}
+            }
         }
     });
 
@@ -122,8 +190,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-selenium-server');
+    grunt.loadNpmTasks('grunt-nightwatch');
 
     grunt.registerTask('default', [ 'concat:cssLib', 'concat:jsLib', 'concat:css', 'cssmin:css', 'concat:js', 'uglify:js']);
     grunt.registerTask('dev', [ 'watch']);
     grunt.registerTask('test-responsive', [ 'browserSync', 'watch']);
+    grunt.registerTask('test', ['nightwatch:phantom']);
 };
