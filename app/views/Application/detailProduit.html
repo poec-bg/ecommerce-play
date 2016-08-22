@@ -1,5 +1,13 @@
 #{extends 'main.html' /}
+<!--Metadonnees du produits-->
 #{set title:'Détail Produit' /}
+<meta property="og:type" content="product" />
+<meta property="og:title" content="${produit.nom}" />
+<meta property="og:description" content="${produit.description}" />
+<meta property="og:image" content="@{'/public/images/boulierchinoisbig.jpg'}" />
+<meta property="og:type" content="product" />
+
+<!--css-->
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/detailProduit.css'}">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
