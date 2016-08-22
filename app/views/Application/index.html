@@ -29,36 +29,19 @@
         </div>
         <div class="panel-body">
             <div class="row">
+                #{list produits, as:'produit'}
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
-                        <img src="@{'/public/images/intercallaire-1.jpg'}" alt="intercallaire 1">
+                        <img class="thumbnail-visuel" src="@{'/public/images/'+produit.nom?.toLowerCase()+'-1.jpg'}" alt="${produit.nom} 1">
                         <div class="caption">
-                            <h3>Intercallaires</h3>
+                            <h3>${produit.nom}</h3>
                             <p>Adolescebat autem obstinatum propositum erga haec et similia multa scrutanda, stimulos admovente regina, quae abrupte mariti fortunas trudebat in exitium praeceps, cum eum potius lenitate feminea ad veritatis humanitatisque viam reducere utilia suadendo deberet, ut in Gordianorum actibus factitasse Maximini truculenti illius imperatoris rettulimus coniugem.</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Voir</a> <a href="#" class="btn btn-default" role="button">Commander</a></p>
+                            <div class=""><div class="infos-supplementaires ">${produit.prixUnitaire} €</div><label class="label label-success infos-supplementaires"><div class="infos-supplementaires ">En stock</div></label></div>
+                            <p><a href="@{Application.detailProduit(produit.id)}" class="btn btn-primary" role="button">Voir</a> <a href="@{Panier.ajouterAuPanier(produit.id)}" class="btn btn-default" role="button">Commander</a></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="@{'/public/images/intercallaire-2.jpg'}" alt="intercallaire 2">
-                        <div class="caption">
-                            <h3>Intercallaires</h3>
-                            <p>Adolescebat autem obstinatum propositum erga haec et similia multa scrutanda, stimulos admovente regina, quae abrupte mariti fortunas trudebat in exitium praeceps, cum eum potius lenitate feminea ad veritatis humanitatisque viam reducere utilia suadendo deberet, ut in Gordianorum actibus factitasse Maximini truculenti illius imperatoris rettulimus coniugem.</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Voir</a> <a href="#" class="btn btn-default" role="button">Commander</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="@{'/public/images/intercallaire-3.jpg'}" alt="intercallaire 3">
-                        <div class="caption">
-                            <h3>Intercallaires</h3>
-                            <p>Adolescebat autem obstinatum propositum erga haec et similia multa scrutanda, stimulos admovente regina, quae abrupte mariti fortunas trudebat in exitium praeceps, cum eum potius lenitate feminea ad veritatis humanitatisque viam reducere utilia suadendo deberet, ut in Gordianorum actibus factitasse Maximini truculenti illius imperatoris rettulimus coniugem.</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Voir</a> <a href="#" class="btn btn-default" role="button">Commander</a></p>
-                        </div>
-                    </div>
-                </div>
+                #{/list}
             </div>
         </div>
     </div>
@@ -71,44 +54,28 @@
         </div>
         <div class="panel-body">
             <div class="row">
+                #{list produits, as:'produit'}
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
-                        <img src="@{'/public/images/intercallaire-1.jpg'}" alt="intercallaire 1">
+                        <img class="thumbnail-visuel" src="@{'/public/images/'+produit.nom?.toLowerCase()+'-1.jpg'}" alt="${produit.nom} 1">
                         <div class="caption">
-                            <h3>Intercallaires</h3>
+                            <h3>${produit.nom}</h3>
                             <p>Adolescebat autem obstinatum propositum erga haec et similia multa scrutanda, stimulos admovente regina, quae abrupte mariti fortunas trudebat in exitium praeceps, cum eum potius lenitate feminea ad veritatis humanitatisque viam reducere utilia suadendo deberet, ut in Gordianorum actibus factitasse Maximini truculenti illius imperatoris rettulimus coniugem.</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Voir</a> <a href="#" class="btn btn-default" role="button">Commander</a></p>
+                            <div class=""><div class="infos-supplementaires ">${produit.prixUnitaire} €</div><label class="label label-success infos-supplementaires"><div class="infos-supplementaires ">En stock</div></label></div>
+                            <p><a href="@{Application.detailProduit(produit.id)}" class="btn btn-primary" role="button">Voir</a> <a href="@{Panier.ajouterAuPanier(produit.id)}" class="btn btn-default" role="button">Commander</a></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="@{'/public/images/intercallaire-2.jpg'}" alt="intercallaire 2">
-                        <div class="caption">
-                            <h3>Intercallaires</h3>
-                            <p>Adolescebat autem obstinatum propositum erga haec et similia multa scrutanda, stimulos admovente regina, quae abrupte mariti fortunas trudebat in exitium praeceps, cum eum potius lenitate feminea ad veritatis humanitatisque viam reducere utilia suadendo deberet, ut in Gordianorum actibus factitasse Maximini truculenti illius imperatoris rettulimus coniugem.</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Voir</a> <a href="#" class="btn btn-default" role="button">Commander</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail">
-                        <img src="@{'/public/images/intercallaire-3.jpg'}" alt="intercallaire 3">
-                        <div class="caption">
-                            <h3>Intercallaires</h3>
-                            <p>Adolescebat autem obstinatum propositum erga haec et similia multa scrutanda, stimulos admovente regina, quae abrupte mariti fortunas trudebat in exitium praeceps, cum eum potius lenitate feminea ad veritatis humanitatisque viam reducere utilia suadendo deberet, ut in Gordianorum actibus factitasse Maximini truculenti illius imperatoris rettulimus coniugem.</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Voir</a> <a href="#" class="btn btn-default" role="button">Commander</a></p>
-                        </div>
-                    </div>
-                </div>
+                #{/list}
             </div>
         </div>
     </div>
 </div>
 
-
+<!--
 <ul>
 #{list produits, as:'produit'}
     <li><a href="@{Application.detailProduit(produit.id)}">${produit.nom} : ${produit.prixUnitaire} €</a></li>
 #{/list}
 </ul>
+-->

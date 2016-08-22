@@ -124,3 +124,14 @@ a{
 /*    border-color: #f5f5f5;*/
     text-decoration : none;
 }
+
+.test{
+    padding : 5px;
+    background-color : #f5f5f5;
+    border-color : #e7e7e7;
+}
+
+.infos-supplementaires{
+    display : inline-block;
+    width : 50%;
+}
