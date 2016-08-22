@@ -17,7 +17,7 @@ module.exports = function(grunt) {
             },
             js : {
                 src: [
-                    'public/javascripts/main.js'
+                    'public/javascripts/main.js', 'public/javascripts/ripple-effect.js'
                 ],
                 dest: 'public/javascripts/javascripts.min.js'
             },
@@ -196,5 +196,5 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [ 'concat:cssLib', 'concat:jsLib', 'concat:css', 'cssmin:css', 'concat:js', 'uglify:js']);
     grunt.registerTask('dev', [ 'watch']);
     grunt.registerTask('test-responsive', [ 'browserSync', 'watch']);
-    grunt.registerTask('test', ['nightwatch:phantom']);
+    grunt.registerTask('test', ['nightwatch']);
 };

@@ -17,6 +17,25 @@
 </head>
 <body>
 
+    <header>
+        <button id="menu-btn">click</button>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="#" title="click me"> menu</a></li>
+                <li><a href="#" title="click me"> menu</a></li>
+                <li><a href="#" title="click me"> menu</a></li>
+                <li><a href="#" title="click me"> menu</a></li>
+                <li><a href="#" title="click me"> menu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    *{<div style="width: 300px; height: 200px; margin: 30px" class="ripple-effect" data-inkcolor="#6EA843">
+        <a class="ripple-effect-trigger" href="#" title="click">Vue d'ensemble</a>
+    </div>}*
+
+
+
     #{if controllers.secure.Security.isConnected()}
         <li><a href="@{Panier.voirMonPanier()}">Voir Panier</a></li>
         #{if controllers.secure.Security.check("ADMIN")}
@@ -29,13 +48,14 @@
     #{/else}
 
     #{doLayout /}
-
+    <div id="mask"></div>
     <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 
     #{if play.Play.mode == play.Play.Mode.DEV}
         <script src="@{'/public/lib/bootstrap/3.3.7/js/bootstrap.min.js'}"></script>
         <script src="@{'/public/javascripts/main.js'}"></script>
         <script src="@{'/public/javascripts/intro.js'}"></script>
+        <script src="@{'/public/javascripts/ripple-effect.js'}"></script>
 
         <script type='text/javascript'>//<![CDATA[document.write("<script async src='//HOST:9001/browser-sync-client.2.2.0.js'><\/script>".replace(/HOST/g, location.hostname));//]]></script>
     #{/if}
@@ -43,5 +63,12 @@
         <script src="@{'/public/lib/lib.min.js'}"></script>
     #{/else}
     #{get 'moreScripts' /}
+    <script type="text/javascript">
+        $(function(){
+            $('#menu-btn, #mask').on('click', function(){
+                $('body').toggleClass('main-menu-opened');
+            })
+        });
+    </script>
 </body>
 </html>

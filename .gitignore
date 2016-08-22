@@ -24,10 +24,10 @@ modules
 cobertura.ser
 atlassian-ide-plugin.xml
 node_modules
+test/features/report
 !conf/sql
 !app/exceptions
 !app/model
 !app/services
 !app/validators
 !public/lib
-!test/features/report

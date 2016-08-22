@@ -11,19 +11,19 @@ let x = "test";
 
  var foo = 1;
  if(true){
- var foo = 2;
+    var foo = 2;
  }
 
  console.log("foo => " + foo);
 
  let bar = 1;
  if(true){
- let bar = 2;
+    let bar = 2;
  }
 
  console.log("bar => " + bar);
 
- */
+*/
 
 
 /* ==========================================================================
@@ -34,7 +34,7 @@ const PI = 3.14;
 
 // Le code ci-dessous ne va pas compiler
 
-// PI = 4;
+/*PI = 4;*/
 
 
 /* ==========================================================================
@@ -57,32 +57,32 @@ console.log(doSomething(3));
 
 /*
 
- let word, sum;
+ let word, area;
  let person = {},
  personName = "John Doe";
 
  function getData(){
- let myString = "test";
- let area = PI * 4 * 4;
- let isOk = true;
- let name = {name:personName};
- return [myString, area, isOk, name];
+     let myString = "test";
+     let area = PI * 4 * 4;
+     let isOk = true;
+     let name = {name:personName};
+     return [myString, area, isOk, name];
  }
 
- [word, sum, , person] = getData();
+ [word, area, , person] = getData();
 
  console.log("word => " + word);
- console.log("sum => " + sum);
+ console.log("area => " + area);
  console.log("person => " + person.name);
 
- */
+*/
 
 
 /* ==========================================================================
  OBJECT DESTRUCTURING
  ========================================================================== */
-
 /*
+
 
  let person = {firstName: "John", lastName: "Doe", age: 25, genre: "male"};
  let {firstName, age} = person;
@@ -90,7 +90,7 @@ console.log(doSomething(3));
  console.log("FirstName : " + firstName);
  console.log("Age : " + age);
 
- */
+*/
 
 
 /* ==========================================================================
@@ -100,7 +100,7 @@ console.log(doSomething(3));
 /*
 
  var getArea = function(radius){
- return PI * radius * radius;
+  return PI * radius * radius;
  }
 
  console.log("javascript 1.5 => " + getArea(5));
@@ -133,9 +133,10 @@ console.log(doSomething(3));
  let es6_presentation = `My name is ${firstName} ${lastName}.
  I'm ${age} years old.`;
 
- console.log("javascript 1.6 => \n" + es6_presentation);
+ console.log(`javascript 1.6 =>
+${es6_presentation}`);
 
- */
+*/
 
 
 /* ==========================================================================
@@ -143,10 +144,11 @@ console.log(doSomething(3));
  ========================================================================== */
 
 /*
+
  function* indexGenerator(){
- var index = 0;
- while(true)
- yield index++;
+  var index = 0;
+  while(true)
+   yield index++;
  }
 
  var getIndex = indexGenerator();
@@ -155,16 +157,16 @@ console.log(doSomething(3));
  console.log("New index = " + getIndex.next().value);
  console.log("New index = " + getIndex.next().value);
  console.log("New index = " + getIndex.next().value);
-*/
 
+*/
 
 
 /* ==========================================================================
  SPREAD OPERATORS
  ========================================================================== */
 
-/*
 
+/*
 
 let concat = (a, b, c) => a + b + c;
 
@@ -180,8 +182,8 @@ let groupeB = ["Michael", "Kate", "Holy"];
 let allPersons = ["Michael", ...groupeA, "Kate", "Holy"];
 console.log(allPersons);
 
-*/
 
+*/
 
 
 
@@ -206,7 +208,7 @@ console.log(allPersons);
 
  console.log("Male : " + JSON.stringify(persons.get("male")));
 
- */
+*/
 
 
 /* ==========================================================================
@@ -220,7 +222,7 @@ console.log(allPersons);
 
  console.log(finalList);
 
- */
+*/
 
 
 /* ==========================================================================
@@ -228,23 +230,21 @@ console.log(allPersons);
  ========================================================================== */
 
 /*
-import Person from './person.es6'
 
+import Person from './person.es6'
 
 let franck = new Person("Franck");
 franck.age = 32;
 franck.sayHello();
-*/
 
 
-/*
 
 import Pilot from './pilot.es6'
 
 let peter = new Pilot("Peter", "Car");
 peter.age = 45;
 peter.sayHello();
-console.log(peter.vehicule);
+console.log(`Peter's vehicule : ${peter.vehicule}`);
 
 */
 
