@@ -25,6 +25,7 @@ cobertura.ser
 atlassian-ide-plugin.xml
 node_modules
 test/features/report
+test/features/screenshots
 !conf/sql
 !app/exceptions
 !app/model

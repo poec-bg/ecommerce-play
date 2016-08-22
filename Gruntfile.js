@@ -130,6 +130,13 @@ module.exports = function(grunt) {
 
                 // YOU HAVE TO DOWNLOAD THE DRIVERS => http://www.seleniumhq.org/download/
                 test_settings: {
+                    default: {
+                        "screenshots" : {
+                            "enabled": true,
+                            "path": "test/features/screenshots",
+                            "on_failure": true
+                        }
+                    },
                     firefox: {
                         "desiredCapabilities": {
                             "browserName": "firefox"
