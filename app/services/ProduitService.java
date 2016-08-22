@@ -145,6 +145,7 @@ public class ProduitService {
                 produit.nom = result.getString("nom");
                 produit.description = result.getString("description");
                 produit.prixUnitaire = result.getFloat("prixUnitaire");
+                produit.categorie = result.getString("categorie");
                 produit.isSupprime = result.getBoolean("isSupprime");
                 return produit;
             }

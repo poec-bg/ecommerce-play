@@ -15,8 +15,9 @@ CREATE TABLE `Client` (
 CREATE TABLE `Produit` (
   `id` VARCHAR(255) NOT NULL,
   `nom` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NULL,
+  `description` VARCHAR(400) NULL,
   `prixUnitaire` FLOAT NOT NULL,
+  `categorie` VARCHAR(45) NULL,
   `isSupprime` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC));
