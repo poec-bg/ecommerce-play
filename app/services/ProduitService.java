@@ -104,6 +104,7 @@ public class ProduitService {
                 produit.description = result.getString("description");
                 produit.prixUnitaire = result.getFloat("prixUnitaire");
                 produit.isSupprime = result.getBoolean("isSupprime");
+                produit.image = result.getString("image");
                 produitsDb.add(produit);
             }
         } catch (SQLException e) {
@@ -146,6 +147,7 @@ public class ProduitService {
                 produit.description = result.getString("description");
                 produit.prixUnitaire = result.getFloat("prixUnitaire");
                 produit.isSupprime = result.getBoolean("isSupprime");
+                produit.image= result.getString("image");
                 return produit;
             }
         } catch (SQLException e) {

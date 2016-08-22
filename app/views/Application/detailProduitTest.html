@@ -1,64 +1,6 @@
 #{extends 'main.html' /}
 
-<head>
-    <meta charset="UTF-8">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <title>Presentation de produits | My Site</title>
-    <meta name="apple-mobile-web-app-title" content="Presentation of my company | My Site">
-    <meta name="application-name" content="Presentation of my company | My Site">
-    <meta property="og:title" content="Presentation of my company | My Site">
-    <meta property="twitter:title" content="Presentation of my company | My Site">
-
-    <meta name="description" content="Description about my page in 160 characters">
-    <meta name="msapplication-tooltip" content="Description about my page in 160 characters">
-    <meta property="og:description" content="Description about my page in 160 characters">
-    <meta property="twitter:description" content="Description about my page in 160 characters">
-
-    <link rel="image_src" href="http://www.mysite.com/images/my-site-presentation.png">
-    <meta property="twitter:image" content="http://www.mysite.com/images/my-site-presentation.png">
-    <meta property="og:image" content="http://www.mysite.com/images/my-site-presentation.png">
-
-    <meta property="og:url" content="http://www.mysite.com/about-us">
-    <meta property="twitter:url" content="http://www.mysite.com/about-us">
-    <link rel="canonical" href="http://www.mysite.com/about-us">
-
-    <meta property="og:article:published_time" content="16/08/2016">
-    <meta name="date" content="16/08/2016">
-
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="My site">
-
-    <meta property="og:article:publisher" content="https://www.facebook.com/My-Company">
-    <meta property="twitter:site" content="@MyCompnay">
-    <meta property="twitter:creator" content="@MyCompnay">
-    <meta name="author" content="http://www.mysite.com">
-
-    <meta property="twitter:card" content="photo">
-
-    <meta name="geo.placename" content="Rouen">
-    <meta name="geo.region" content="fr">
-
-    <meta name="copyright" content="©2016 My site | all rights reserved">
-
-    <!-- <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"> -->
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-
-
-    <link rel="stylesheet" media="all" href="@{'/public/stylesheets/produitStyle.css'}">
-
-
-
-</head>
 
 <!--header!-->
 
@@ -73,9 +15,9 @@
     <div class="container col-xs-8 ">
         <h1>${produit.nom}</h1>
 
-        <img data-holder-rendered="true" src="http://ichef.bbci.co.uk/news/624/cpsprodpb/0FFB/production/_88819040_85eb06a1-3986-45b9-af28-20783f938751.jpg" class="shadow" width="460" height="215" ></p>
+        <img  src="${produit.image}" alt="nike sbd" class="shadow" width="100%" height="100%" >
     </div>
-
+        <!--"http://www.numerama.com/content/uploads/2015/10/Nike-Mag.jpg"-->
     <div class="well col-xs-4 wrapEllipse ">
         <h2>Description</h2>
         <p>${produit.description}</p>
@@ -88,17 +30,22 @@
             <p><input type="submit" value="Ajouter au Panier"></p>
         </form>
 
+        <img src="http://westingmediastudio.com/wp-content/themes/shopperpress/thumbs/secure-cc-paypal.gif" class="shadow">
+
 
 
 
 
 
     </div>
+        <div class="container col-xs-4 col-md-8 clearfix">
+
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item video" src="https://www.youtube.com/embed/ejVe_VHZJ6Y" frameborder="0" allowfullscreen></iframe>
+            </div>
 
 
-    <div class="container col-xs-8 ">
-    <iframe width="460" height="215" src="https://www.youtube.com/embed/ejVe_VHZJ6Y" frameborder="0" allowfullscreen></iframe>
-    </div>
+         </div>
     </div>
 </div>
 
@@ -106,33 +53,109 @@
 
 <div class="container">
     <!-- Example row of columns -->
-    <div class="row">
-        <div class="col-xs-3">
-            <h2 class="wrapEllipse">Délais de livraison</h2>
-            <p class="wrapEllipse"><ul><li>Colissimo: 5jours</li>
-            <li>DHL: 2 jours</li></ul> </p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+
+    <div class="row" >
+        <div class="col-sm-6 col-md-3" height="100%">
+            <div class="thumbnail">
+                <img src="http://www.universproteine.com/img/cms/colissimo.png" alt="...">
+                <div class="caption">
+                    <h3 class="wrapEllipse" s>Délais de livraison</h3>
+                    <p class="wrapEllipse"><ul><li>Colissimo: 5jours</li>
+                    <li>DHL: 2 jours</li></ul> </p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
         </div>
-        <div class="col-xs-3">
-            <h2 class="wrapEllipse">Disponibilité</h2>
-            <p class="wrapEllipse">Ce produit est en stock </p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="https://t3.ftcdn.net/jpg/00/31/21/82/500_F_31218298_W8aCLpboy94aX5tXcMwRYCJ94VctFZab.jpg" alt="...">
+            <div class="caption">
+                <h3 class="wrapEllipse" s>Disponibilité</h3>
+                <p class="wrapEllipse">Ce produit est en stock</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
         </div>
-        <div class="col-xs-3">
-            <h2 class="wrapEllipse">Catégorie</h2>
-            <p class="wrapEllipse">Chaussure auto-laçante</p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+    </div>
+
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="https://lh5.googleusercontent.com/-Q8jolvY4uUw/AAAAAAAAAAI/AAAAAAAAN4k/EUQCmct8JF0/s0-c-k-no-ns/photo.jpg" alt="...">
+            <div class="caption">
+                <h3 class="wrapEllipse" s>Catégorie</h3>
+                <p class="wrapEllipse">Chaussure de la marque nike</p>
+                <p><a href="#" class="btn btn-primary" role="button">Homme</a> <a href="#" class="btn btn-default" role="button">Femme</a></p>
+            </div>
         </div>
-        <div class="col-xs-3">
-            <h2 class="wrapEllipse">Garantie</h2>
-            <p class="wrapEllipse">Garantie 2 ans</p>
-            <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+    </div>
+
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="http://www.ledproshop.com/media/catalog/product/cache/1/thumbnail/9df78eab33525d08d6e5fb8d27136e95/g/a/garantie2-ledpro_1_3.png" alt="...">
+            <div class="caption">
+                <h3 class="wrapEllipse" s>Garantie</h3>
+                <p class="wrapEllipse">Garantie 2 ans</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
         </div>
     </div>
 
 </div>
 
-<hr>
+
+</div>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img class="first-slide" src="http://www.lepoint.fr/images/2014/03/06/56045714-3-jpg_2132572.JPG" alt="First slide" width=100%;
+                 height=350px>
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Les autres utilisateurs ont achetés</h1>
+                    <p>over board de retour vers le futur</p>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Ajouter au panier</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img class="second-slide" src="http://5.kicksonfire.net/wp-content/uploads/2015/11/Nike-SB-Trainerendor-1.jpg?9a1c09" alt="Second slide" width=100%;
+                 height=350px>
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Les autres utilisateurs ont acheté</h1>
+                    <p>Chaussure</p>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Ajouter au panier</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img class="third-slide" src="http://media.paperblog.fr/i/387/3870344/nouvel-arrivage-nike-snowboarding-boots-L-NhtHgo.jpeg" alt="Third slide" width=100%;
+                 height=350px>
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Les autres utilisateurs ont achetés</h1>
+                    <p>Bottes de snowboard</p>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Ajouter au panier</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 <!--footer!-->
 <footer>
 
@@ -142,7 +165,7 @@
     </div>
 
 </footer>
-</div>
+
 
 
 

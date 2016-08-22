@@ -1,3 +1,9 @@
+body{
+margin-top: 50px;}
+
+
+
+
 .shadow {
   -moz-box-shadow:    3px 3px 5px 6px #ccc;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
@@ -28,5 +34,14 @@ p{
 .borderbox{box-sizing: border-box;}
 .right{ float: left;}
 
+.video{
+margin-top: 10px;
+float:left;}
 
+#header{
+margin-bottom: 180px;}
 
+.caroussel{
+margin-left: 100px;
+margin-right: 100px;
+}

@@ -13,6 +13,9 @@ GET     /produit/{idProduit}                                                    
 GET     /presentation/?                                                            Application.presentation
 POST     /presentation/async-message                                               Application.getAsyncPresentationMessage
 
+#contact
+GET     /contact                                                                    Application.contact
+
 # Panier
 GET     /panier                                                                    Panier.voirMonPanier
 GET     /panier/ajouter/{idProduit}                                                Panier.ajouterAuPanier
