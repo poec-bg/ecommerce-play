@@ -1,5 +1,6 @@
 package controllers;
 
+import com.google.gson.Gson;
 import controllers.secure.Check;
 import controllers.secure.Secure;
 import controllers.secure.Security;
@@ -56,7 +57,9 @@ public class Panier extends Controller {
 
     public static void ajouterAuPanierJson(String idProduit) {
         model.Panier panier = ajouterAuPanierEnNormalOuJson(idProduit);
-        renderJSON(panier);
+        Gson gson = new Gson();
+        String cart = gson.toJson(panier);
+        renderJSON(cart);
     }
 
     private static model.Panier ajouterAuPanierEnNormalOuJson(String idProduit) {

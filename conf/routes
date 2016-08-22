@@ -15,6 +15,7 @@ POST     /presentation/async-message                                            
 
 # Panier
 GET     /panier                                                                    Panier.voirMonPanier
+GET     /panier/ajouter-async/{idProduit}                                          Panier.ajouterAuPanierJson
 GET     /panier/ajouter/{idProduit}                                                Panier.ajouterAuPanier
 GET     /panier/modifier/{idProduit}/quantite/{quantite}                           Panier.modifierQuantite
 POST    /panier/modifier/quantite                                                  Panier.modifierQuantite

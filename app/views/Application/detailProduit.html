@@ -10,7 +10,9 @@
 
 <a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
 
-<a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
+<a class="add-product-json-link" href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
+
+<div id="cart"> </div>
 
 <form action="@{Panier.modifierQuantite()}" method="post">
     <input type="hidden" name="idProduit" value="${produit.id}">
@@ -19,3 +21,8 @@
 </form>
 
 <p>${flash.success}</p>
+
+#{set 'moreScripts'}
+    #{get 'moreScripts'/}
+    <script src="@{'/public/javascripts/product.js'}"></script>
+#{/set }
