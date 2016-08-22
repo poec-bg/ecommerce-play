@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'Contact' /}
+
+<div id="map-container">
+    <div id="map_canvas"></div>
+</div>
+
+#{set 'moreScripts'}
+    #{get 'moreScripts'/}
+    <script src="@{'/public/javascripts/map.js'}"></script>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAZRP7WP-wPODDax2cPmXbPntySGMwU1YQ&callback=initMap"></script>
+#{/set }

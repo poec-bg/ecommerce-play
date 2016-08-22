@@ -60,6 +60,9 @@ public class Application extends Controller {
         renderTemplate("tags/presentation-message.html", name, signature);
     }
 
+    public static void contact(){
+        render();
+    }
 
 
 }
