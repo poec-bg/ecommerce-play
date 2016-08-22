@@ -3,6 +3,15 @@
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/detailProduit.css'}">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
+<!--Fil d'ariane des categories-->
+<div class="">
+    <ol class="breadcrumb">
+        <li><a href="@{Application.index()}">Home</a></li>
+        <li class="active">${produit.categorie}</li>
+    </ol>
+</div>
+
+<!--Image et info produit-->
 <div class="produit col-xs-12 col-sm-9">
     <img src="@{'/public/images/boulierchinoisbig.jpg'}" class="img-responsive produit-img col-xs-12 col-sm-6" alt="image du produit">
     <div class="col-xs-12 col-sm-6">
