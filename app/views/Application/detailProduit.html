@@ -1,6 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Détail Produit' /}
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/detailProduit.css'}">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
 <div class="produit col-xs-12 col-sm-9">
     <img src="@{'/public/images/boulierchinoisbig.jpg'}" class="img-responsive produit-img col-xs-12 col-sm-6" alt="image du produit">
@@ -37,7 +38,7 @@
         <p><input type="submit" value="Ajouter au Panier"></p>
     </form>
 
-    <p>Payments disponibles : <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> <span class="glyphicon glyphicon-gbp" aria-hidden="true"></span></p>
+    <p>Payments disponibles : <span class="fa fa-cc-mastercard" aria-hidden="true"></span> <span class="fa fa-cc-visa" aria-hidden="true"></span>  <span class="fa fa-cc-paypal" aria-hidden="true"></span></p>
 </div>
 
 <p>${flash.success}</p>
