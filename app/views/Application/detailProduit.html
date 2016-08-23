@@ -6,7 +6,7 @@
     <div class="container">
         <ol class="breadcrumb" id="breadcrumb-list" itemscope itemtype="http://schema.org/BreadcrumbList">
             <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                <a class="breadcrumb-link" href="@{Application.index()}" itemprop="item"><span itemprop="name">Retour</span></a>
+                <a class="breadcrumb-link glyphicon glyphicon-home" href="@{Application.index()}" itemprop="item"><!--<span itemprop="name">Retour--></span></a>
                 <meta itemprop="position" content="1" />
             </li>
             <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
@@ -19,71 +19,112 @@
 
 <main>
     <div class="container">
-        <div class="main">
-            <article class="main-article border">
-                <div class="images border">
-                    <div class="grande-image decale">
-                        <img id="grande-image" src="@{'/public/images/'+produit.nom?.toLowerCase()+'-1.jpg'}" class="img-responsive grande-image" alt="Responsive image">
+        <div class="main ">
+            <!--<div class="global-article">-->
+                <article class="main-article">
+                    <div class="images">
+                        <div class="grande-image decale">
+                            <img id="grande-image" src="@{'/public/images/'+produit.nom?.toLowerCase()+'-1.jpg'}" class="img-responsive grande-image" alt="Responsive image">
+                        </div>
+                        <div class="decale ">
+                            <ul class="row decale">
+                                <li class="col-md-1 vignette">
+                                    <a href="#" class="thumbnail">
+                                        <img id="vignette-1" class="vignettes" src="@{'/public/images/'+produit.nom?.toLowerCase()+'-1.jpg'}" alt="...">
+                                    </a>
+                                </li>
+                                <li class="col-md-1 vignette">
+                                    <a href="#" class="thumbnail">
+                                        <img id="vignette-2" class="vignettes" src="@{'/public/images/'+produit.nom?.toLowerCase()+'-2.jpg'}" alt="...">
+                                    </a>
+                                </li>
+                                <li class="col-md-1 vignette">
+                                    <a href="#" class="thumbnail">
+                                        <img id="vignette-3" class="vignettes" src="@{'/public/images/'+produit.nom?.toLowerCase()+'-3.jpg'}" alt="...">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="decale">
-                        <ul class="row decale">
-                            <li class="col-md-1 vignette">
-                                <a href="#" class="thumbnail">
-                                    <img id="vignette-1" class="vignettes" src="@{'/public/images/'+produit.nom?.toLowerCase()+'-1.jpg'}" alt="...">
-                                </a>
-                            </li>
-                            <li class="col-md-1 vignette">
-                                <a href="#" class="thumbnail">
-                                    <img id="vignette-2" class="vignettes" src="@{'/public/images/'+produit.nom?.toLowerCase()+'-2.jpg'}" alt="...">
-                                </a>
-                            </li>
-                            <li class="col-md-1 vignette">
-                                <a href="#" class="thumbnail">
-                                    <img id="vignette-3" class="vignettes" src="@{'/public/images/'+produit.nom?.toLowerCase()+'-3.jpg'}" alt="...">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="description-produit border">
-                    <div class="desciption-produit-titre">${produit.nom}</div>
-                    <div class="desciption-produit-description">${produit.description}</div>
-                    <div class="desciption-produit-description"0>Adolescebat autem obstinatum propositum erga haec et similia multa scrutanda, stimulos admovente regina, quae abrupte mariti fortunas trudebat in exitium praeceps, cum eum potius lenitate feminea ad veritatis humanitatisque viam reducere utilia suadendo deberet, ut in Gordianorum actibus factitasse Maximini truculenti illius imperatoris rettulimus coniugem.</div>
+                    <div class="description-produit">
+                        <div class="desciption-produit-titre">${produit.nom}</div>
+                        <div class="desciption-produit-description">${produit.description}</div>
+                        <div class="desciption-produit-description"0>Adolescebat autem obstinatum propositum erga haec et similia multa scrutanda, stimulos admovente regina, quae abrupte mariti fortunas trudebat in exitium praeceps, cum eum potius lenitate feminea ad veritatis humanitatisque viam reducere utilia suadendo deberet, ut in Gordianorum actibus factitasse Maximini truculenti illius imperatoris rettulimus coniugem.</div>
 
-                    <div class="texte-important-succes">En stock</div>
-                </div>
-            </article>
-            <aside class="pull-right border taille test">
-                <div class="desciption-produit-prixUnitaire decale">Prix : ${produit.prixUnitaire} €</div>
-                <div class="separateur">&nbsp;</div>
-                <div class="decale">
-                    <a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
-                    <a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
-                    <form action="@{Panier.modifierQuantite()}" method="post">
-                        <input type="hidden" name="idProduit" value="${produit.id}">
-                        <p><!--<label>Quantité : </label>--><input class="form-control text-control-quantite" type="number" name="quantite" placeholder="Quantité" value="1" min="1"></p>
-                        <p><input type="submit" value="Ajouter au Panier" class="btn btn-primary"></p>
-                    </form>
-                </div>
-                <div class="separateur">&nbsp;</div>
-                <div class="decale">Moyens de paiment accept&eacute;s : </div>
-                <div class="decale">
-                    <img src="@{'/public/images/cartes_credits.jpg'}" alt="cartes de credits" width="150">
-                    <img src="@{'/public/images/paypal.jpg'}" alt="paypal" width="50">
-                </div>
-                <div class="separateur">&nbsp;</div>
-                <div class="decale">Site s&eacute;curis&eacute; : </div>
-                <div class="decale">
-                    <img src="@{'/public/images/site-securise.jpg'}" alt="site securise" width="50">
-                </div>
-            </aside>
+                        <div class="texte-important-succes">En stock</div>
+                    </div>
+                </article>
+                <aside class="pull-right action-produit">
+                    <div class="desciption-produit-prixUnitaire decale">Prix : ${produit.prixUnitaire} €</div>
+                    <div class="separateur">&nbsp;</div>
+                    <div class="decale">
+                        <a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
+                        <a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
+                        <form action="@{Panier.modifierQuantite()}" method="post">
+                            <input type="hidden" name="idProduit" value="${produit.id}">
+                            <p><!--<label>Quantité : </label>--><input class="form-control text-control-quantite" type="number" name="quantite" placeholder="Quantité" value="1" min="1"></p>
+                            <p><input type="submit" value="Ajouter au Panier" class="btn btn-primary"></p>
+                        </form>
+                    </div>
+                    <div class="separateur">&nbsp;</div>
+                    <div class="decale">Moyens de paiment accept&eacute;s : </div>
+                    <div class="decale">
+                        <img src="@{'/public/images/cartes_credits.jpg'}" alt="cartes de credits" width="150">
+                        <img src="@{'/public/images/paypal.jpg'}" alt="paypal" width="50">
+                    </div>
+                    <div class="separateur">&nbsp;</div>
+                    <div class="decale">Site s&eacute;curis&eacute; : </div>
+                    <div class="decale">
+                        <img src="@{'/public/images/site-securise.jpg'}" alt="site securise" width="50">
+                    </div>
+                </aside>
+            <!--</div>-->
+
         </div>
         <div class="separateur">&nbsp;</div>
         <!-- Avis Clients -->
         <div class="container">
-            <div style="color:red;font-size:3em;">A MODIFIER</div>
-            <div class="text-important">Avis des utilisateurs</div>
-            <div class="panel panel-default">
+            <!--<div style="color:red;font-size:3em;">A MODIFIER</div>-->
+            <div class="avis-utilisateurs-titre">Avis des utilisateurs</div>
+            <div class="avis-utilisateurs-item clearfix">
+                <div class="avis-utilisateurs-item-description-utilisateur">
+                    <div class="avis-utilisateur-item-description-utilisateur-nom">
+                        Toto LAVENTURE
+                    </div>
+                    <div class="avis-utilisateur-item-description-utilisateur-date">26/07/2016</div>
+                </div>
+                <div class="avis-utilisateurs-item-commentaire">
+                    <div class="avis-utilisateur-item-note"><span>Note Client : </span><span><img src="@{'/public/images/07.gif'}"></span></div>
+                    <div class="avis-utilisateur-item-titre-commentaire">
+                        <p>Ipsos secum cum quas videretur.</p>
+                    </div>
+                    <div class="avis-utilisateur-item-contenu-commentaire">
+                        <p>
+                            Utque proeliorum periti rectores primo catervas densas opponunt et fortes, deinde leves armaturas, post iaculatores ultimasque subsidiales acies, si fors adegerit, iuvaturas, ita praepositis urbanae familiae suspensae digerentibus sollicite, quos insignes faciunt virgae dexteris aptatae velut tessera data castrensi iuxta vehiculi frontem omne textrinum incedit: huic atratum coquinae iungitur ministerium, dein totum promiscue servitium cum otiosis plebeiis de vicinitate coniunctis: postrema multitudo spadonum a senibus in pueros desinens, obluridi distortaque lineamentorum conpage deformes, ut quaqua incesserit quisquam cernens mutilorum hominum agmina detestetur memoriam Samiramidis reginae illius veteris, quae teneros mares castravit omnium prima velut vim iniectans naturae, eandemque ab instituto cursu retorquens, quae inter ipsa oriundi crepundia per primigenios seminis fontes tacita quodam modo lege vias propagandae posteritatis ostendit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="avis-utilisateurs-item clearfix">
+                <div class="avis-utilisateurs-item-description-utilisateur">
+                    <div class="avis-utilisateur-item-description-utilisateur-nom">
+                        Porte OUVERTE
+                    </div>
+                    <div class="avis-utilisateur-item-description-utilisateur-date">14/06/2016</div>
+                </div>
+                <div class="avis-utilisateurs-item-commentaire">
+                    <div class="avis-utilisateur-item-note"><span>Note Client : </span><span><img src="@{'/public/images/07.gif'}"></span></div>
+                    <div class="avis-utilisateur-item-titre-commentaire">
+                        <p>Ipsos secum cum quas videretur.</p>
+                    </div>
+                    <div class="avis-utilisateur-item-contenu-commentaire">
+                        <p>
+                            Utque proeliorum periti rectores primo catervas densas opponunt et fortes, deinde leves armaturas, post iaculatores ultimasque subsidiales acies, si fors adegerit, iuvaturas, ita praepositis urbanae familiae suspensae digerentibus sollicite, quos insignes faciunt virgae dexteris aptatae velut tessera data castrensi iuxta vehiculi frontem omne textrinum incedit: huic atratum coquinae iungitur ministerium, dein totum promiscue servitium cum otiosis plebeiis de vicinitate coniunctis: postrema multitudo spadonum a senibus in pueros desinens, obluridi distortaque lineamentorum conpage deformes, ut quaqua incesserit quisquam cernens mutilorum hominum agmina detestetur memoriam Samiramidis reginae illius veteris, quae teneros mares castravit omnium prima velut vim iniectans naturae, eandemque ab instituto cursu retorquens, quae inter ipsa oriundi crepundia per primigenios seminis fontes tacita quodam modo lege vias propagandae posteritatis ostendit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Ipsos secum cum quas videretur.</h3>
                 </div>
@@ -98,7 +139,7 @@
                 <div class="panel-body">
                     Utque proeliorum periti rectores primo catervas densas opponunt et fortes, deinde leves armaturas, post iaculatores ultimasque subsidiales acies, si fors adegerit, iuvaturas, ita praepositis urbanae familiae suspensae digerentibus sollicite, quos insignes faciunt virgae dexteris aptatae velut tessera data castrensi iuxta vehiculi frontem omne textrinum incedit: huic atratum coquinae iungitur ministerium, dein totum promiscue servitium cum otiosis plebeiis de vicinitate coniunctis: postrema multitudo spadonum a senibus in pueros desinens, obluridi distortaque lineamentorum conpage deformes, ut quaqua incesserit quisquam cernens mutilorum hominum agmina detestetur memoriam Samiramidis reginae illius veteris, quae teneros mares castravit omnium prima velut vim iniectans naturae, eandemque ab instituto cursu retorquens, quae inter ipsa oriundi crepundia per primigenios seminis fontes tacita quodam modo lege vias propagandae posteritatis ostendit.
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <p>${flash.success}</p>

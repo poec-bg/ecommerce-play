@@ -6,10 +6,11 @@
 
 <div class="container">
     <h1>Bienvenue dans l'application ECommerce</h1>
-
-    <p>${flash.success}</p>
+    #{if flash.success != null}
+        <div class="alert alert-success"><span>${flash.success}</span><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
+    #{/if}
     <!-- Menu Catégories-->
-    <div>
+    <div >
         <nav class="navbar navbar-default">
             <div class="menu-categ">
                 <div class="nav-bar-item"><a href="#">Classeur</a> </div>

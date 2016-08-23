@@ -1,19 +1,53 @@
 #{extends 'main.html' /}
 #{set title:'Mon panier' /}
 
-<a href="@{Application.index()}">Retour</a>
-
-#{if panier.produits && panier.produits.size() > 0}
-<ul>
-    #{list panier.produits, as:'produitPanier'}
-        <li><a href="@{Application.detailProduit(produitPanier.produit.id)}">${produitPanier.produit.nom}</a> x ${produitPanier.quantite}, PU : ${produitPanier.produit.prixUnitaire} €, montant : ${(produitPanier.produit.prixUnitaire * produitPanier.quantite).format("0.##")} €
-            <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite - 1)}"> - </a>
-            <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite + 1)}"> + </a>
-            <a href="@{Panier.retirer(produitPanier.produit.id)}" > x </a></li>
-    #{/list}
-</ul>
-<a href="@{Panier.passerCommande()}">Passer commande</a>
-#{/if}
-#{else}
-<p><i>Aucun produit dans le panier</i></p>
-#{/else}
+<nav id="breadcrumb">
+    <meta itemprop="url" content="http://my-site.com/about-us">
+    <div class="container">
+        <ol class="breadcrumb" id="breadcrumb-list" itemscope itemtype="http://schema.org/BreadcrumbList">
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <a class="breadcrumb-link glyphicon glyphicon-home" href="@{Application.index()}" itemprop="item"><!--<span itemprop="name">Retour--></span></a>
+                <meta itemprop="position" content="1" />
+            </li>
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                <a class="breadcrumb-link" href="#" itemprop="item"><span itemprop="name">Panier</span></a>
+                <meta itemprop="position" content="2" />
+            </li>
+        </ol>
+    </div>
+</nav>
+<div class="container">
+    #{if panier.produits && panier.produits.size() > 0}
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Quantite</th>
+            <th>P. U.</th>
+            <th>Total</th>
+            <th>Modification</th>
+        </tr>
+        #{list panier.produits, as:'produitPanier'}
+            <tr class="panier-produit-item">
+                <td><a href="@{Application.detailProduit(produitPanier.produit.id)}">${produitPanier.produit.nom}</a></td>
+                <td>${produitPanier.quantite}</td>
+                <td>${produitPanier.produit.prixUnitaire} €</td>
+                <td><span class="montant-produit">${(produitPanier.produit.prixUnitaire * produitPanier.quantite).format("0.##")}</span> €</td>
+                <td>
+                    <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite - 1)}" ><span class="glyphicon glyphicon-minus btn-inline"></span> </a>
+                    <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite + 1)}" ><span class="glyphicon glyphicon-plus btn-inline"></span></a>
+                    <a href="@{Panier.retirer(produitPanier.produit.id)}"><span class="glyphicon glyphicon-trash btn-inline"></span></a>
+                </td>
+            </tr>
+        #{/list}
+        <tfoot>
+            <tr>
+                <th>Total de la commande</th><th>&nbsp;</th><th>&nbsp;</th><th><div><span id="total"></span> <span class="glyphicon glyphicon-eur"></span></div></th><th>&nbsp;</th>
+            </tr>
+        </tfoot>
+    </table>
+    <a href="@{Panier.passerCommande()}" class="btn btn-primary btn-panier">Passer commande</a>
+    #{/if}
+    #{else}
+    <p><i>Aucun produit dans le panier</i></p>
+    #{/else}
+</div>

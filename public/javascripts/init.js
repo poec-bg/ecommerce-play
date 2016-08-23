@@ -18,8 +18,20 @@ var $document, $window, $body;
 
         $('.thumbnail-visuel').each(function(){
             $(this).attr('src').toLowerCase();
-        })
+        });
+
+        var total = 0;
+        $('.montant-produit').each(function(){
+            console.log($(this).text());
+            total += parseFloat($(this).text().replace(',','.'));
+        });
+        $('#total').text(total);
+
+        $document.on('click','btn-panier', function(){
+            $('.alert alert-success bandeau-alert').toggleClass('bandeau-alert');
+        });
     });
+
 
     // Dimensionnement des images du bloc section du milieu
     function resetContentVisual(){
