@@ -16,6 +16,9 @@ POST    /presentation/async-message                                             
 # Contact
 GET     /contact/?                                                                 Application.contact
 
+# Contact
+GET     /agenda/?                                                                  Application.agenda
+
 # Panier
 GET     /panier                                                                    Panier.voirMonPanier
 GET     /panier/ajouter-async/{idProduit}                                          Panier.ajouterAuPanierJson

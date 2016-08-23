@@ -578,6 +578,41 @@ GOOGLE MAP
   width: auto;
   display: inline;
 }
+/* ==========================================================================
+AGENDA
+========================================================================== */
+.cell {
+  width: calc(100% / 7);
+  display: block;
+  border: 1px solid #808080;
+  height: 50px;
+  float: left;
+}
+.day-title {
+  text-align: center;
+  line-height: 50px;
+}
+.day {
+  height: 150px;
+}
+.day.active {
+  background-color: #a3ded2;
+}
+.day.empty {
+  background-color: #ececec;
+}
+#alerts-container {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+}
+.alert {
+  background-color: #74c36f;
+  color: #fff;
+  padding: 1em 2em;
+  margin-bottom: 16px;
+  display: block;
+}
 @-moz-keyframes ripple-effect {
   100% {
     opacity: 0;

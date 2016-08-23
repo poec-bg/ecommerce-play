@@ -109,3 +109,38 @@ GOOGLE MAP
 .gm-style label
   width auto
   display inline
+
+
+/* ==========================================================================
+AGENDA
+========================================================================== */
+
+.cell
+  width calc(100% / 7)
+  display block
+  border grey
+  height 50px
+  float left
+
+.day-title
+  text-align center
+  line-height 50px
+
+.day
+  height 150px
+  &.active
+    background-color $color-primary
+  &.empty
+    background-color $color-default
+
+#alerts-container
+  position fixed
+  top 16px
+  right 16px
+
+.alert
+  background-color $color-success
+  color #fff
+  padding 1em 2em
+  margin-bottom 16px
+  display block
