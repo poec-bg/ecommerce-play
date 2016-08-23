@@ -1,12 +1,47 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<h1>Bienvenue dans l'application ECommerce</h1>
 
 <p>${flash.success}</p>
 
-<ul>
-#{list produits, as:'produit'}
-    <li><a href="@{Application.detailProduitTest(produit.id)}">${produit.nom} : ${produit.prixUnitaire} €</a></li>
-#{/list}
-</ul>
+<div class="jumbotron">
+
+    <h1>Bienvenue dans l'application Ecommerce</h1>
+
+    <div class="container">
+
+
+        <div class="row">
+
+
+            #{list produits, as:'produit'}
+            <div class="col-sm-12 col-md-3" >
+
+                <div class="thumbnail">
+
+                    <img src="${produit.image}" alt=${produit.nom} height="400px" width="700px">
+                    <div class="caption">
+                        <h3 class="wrapEllipse"><a href="@{Application.detailProduitTest(produit.id)}">${produit.nom} :
+                            ${produit.prixUnitaire} €</a></h3>
+                        <p><a class="btn btn-primary btn-lg" href="@{Application.detailProduitTest(produit.id)}"
+                              role="button">Learn more »</a></p>
+
+                    </div>
+                </div>
+
+            </div>
+            #{/list}
+
+
+        </div>
+
+        <footer>
+
+            <div class="container">
+                <p class="text-muted">© 2016 Souleymane Inc / <a href="#">Contacts</a></p>
+
+            </div>
+
+        </footer>
+    </div>
+</div>
