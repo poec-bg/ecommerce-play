@@ -54,9 +54,7 @@ $(function(){
     $(document).on('click', '.agenda-event-link', function(evt){
         evt.preventDefault();
         let serial = $(this).data('serial');
-        agendaEvents = agendaEvents.filter(function(agendaEvent, index){
-            return agendaEvent.serial !== serial;
-        });
+        agendaEvents = agendaEvents.filter((agendaEvent, index) => agendaEvent.serial !== serial);
         $('#show-events-btn').trigger('click');
     });
 
@@ -79,7 +77,7 @@ function addDayCell(currentDay){
 
 function displayAlert(){
     $('#alerts-container').append(`<div class="alert">L'event a bien été ajouté</div>`);
-    setTimeout(function(){ $('.alert:first-child').remove(); }, 1500);
+    setTimeout( () => $('.alert:first-child').remove(), 1500);
 }
 
 
