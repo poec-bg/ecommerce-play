@@ -43,13 +43,6 @@ body {
 /* ==========================================================================
   HEADER
 ========================================================================== */
-.header-elem{
-    display: inline;
-    height: 100%;
-    text-align: center;
-    padding-top: 1.0em;
-}
-
 .header-Home{
     display: inline;
     float: left;
