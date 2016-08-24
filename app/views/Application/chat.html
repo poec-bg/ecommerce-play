@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Chat | my site</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <input type="text" id="message">
+    <div id="messages-list"></div>
+    <button id="ws-send"> SEND WS</button>
+    <button id="ws-quit"> QUIT WS</button>
+
+    <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script>
+        (function($){
+
+            // Initialisation du websocket
+            var WS = window['MozWebSocket'] ? MozWebSocket : WebSocket;
+            var socket = new WS('@@{Chats.join(java.util.UUID.randomUUID().toString())}');
+
+            $(function(){
+                $('#ws-send').on('click', function(){
+                    waitForSocketConnection(socket, function(){
+                        socket.send($('#message').val());
+                        console.log("message sent!!!");
+                    });
+                });
+
+                $('#ws-quit').on('click', function(){
+                    waitForSocketConnection(socket, function(){
+                        socket.send("quit");
+                        console.log("quit room");
+                    });
+                })
+            });
+
+            // A la réception du message depuis le serveur
+            socket.onmessage = function(event) {
+                console.log(event.data)
+                $('#messages-list').append('<div>' + event.data + '</div>');
+            }
+
+            // Permet de mettre en attente l'appel jusqu'à ce que la connexion soit faite
+            function waitForSocketConnection(socket, callback){
+                setTimeout(
+                        function () {
+                            if (socket.readyState === 1) {
+                                console.log("Connection is made")
+                                if(callback != null){
+                                    callback();
+                                }
+                                return;
+
+                            } else {
+                                console.log("wait for connection...")
+                                waitForSocketConnection(socket, callback);
+                            }
+
+                        }, 5); // attente de 5 millisecondes
+            }
+        })(jQuery);
+    </script>
+
+</body>

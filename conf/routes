@@ -36,6 +36,11 @@ GET     /admin/clients                                                          
 GET     /admin/clients/nouveau                                                     Admin.creerNouveauClient
 POST    /admin/clients/nouveau                                                     Admin.enregistrerNouveauClient
 
+GET     /chat/?                                                                    Application.chat
+# WebSockets
+WS      /chat/test                                                                 Chats.test
+WS      /chat/?                                                                    Chats.join
+
 # Ignore favicon requests
 GET     /favicon.ico                                                               404
 

@@ -17,7 +17,7 @@
 </head>
 <body>
 
-    *{<header>
+    <header>
         <button id="menu-btn">click</button>
         <nav id="main-nav">
             <ul>
@@ -28,11 +28,11 @@
                 <li><a href="#" title="click me"> menu</a></li>
             </ul>
         </nav>
-    </header>}*
+    </header>
 
-    *{<div style="width: 300px; height: 200px; margin: 30px" class="ripple-effect" data-inkcolor="#6EA843">
+    <div style="width: 300px; height: 200px; margin: 30px" class="ripple-effect" data-inkcolor="#6EA843">
         <a class="ripple-effect-trigger" href="#" title="click">Vue d'ensemble</a>
-    </div>}*
+    </div>
 
 
 
@@ -48,6 +48,9 @@
     #{/else}
 
     #{doLayout /}
+
+
+
     <div id="mask"></div>
     <script src="//code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 
@@ -63,12 +66,12 @@
         <script src="@{'/public/lib/lib.min.js'}"></script>
     #{/else}
     #{get 'moreScripts' /}
-    *{<script type="text/javascript">
+    <script type="text/javascript">
         $(function(){
             $('#menu-btn, #mask').on('click', function(){
                 $('body').toggleClass('main-menu-opened');
-            })
+            });
         });
-    </script>}*
+    </script>
 </body>
 </html>
