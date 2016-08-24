@@ -1,5 +1,7 @@
 package controllers;
 
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
 import exceptions.InvalidArgumentException;
 import exceptions.MetierException;
 import model.Client;
@@ -10,7 +12,9 @@ import play.mvc.Controller;
 import services.ClientService;
 import services.ProduitService;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Application extends Controller {
 
@@ -70,6 +74,23 @@ public class Application extends Controller {
 
     public static void chat(){
         render();
+    }
+
+    public static void autoComplete(){
+        render();
+    }
+
+    public static void getAutoCompleteData(String q){
+        List<String> words = Arrays.asList("test", "automobile", "autoroute");
+
+        List<String> result = words.stream()
+                .filter(word -> word.contains(q))
+                .collect(Collectors.toList());
+
+        Gson gson = new Gson();
+        String resultJson = gson.toJson(result);
+
+        renderJSON(resultJson);
     }
 
 }

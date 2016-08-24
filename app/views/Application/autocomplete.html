@@ -1,0 +1,96 @@
+#{extends 'main.html' /}
+#{set title:'Autocomplete' /}
+
+<style>
+    #results-list{
+        padding: 0;
+        width: 150px;
+    }
+
+    #results-list a{
+        display: block;
+        padding: .5em 1em;
+    }
+
+    #results-list a:focus{
+        color: #fff;
+        background-color: #44a5c2;
+    }
+</style>
+
+
+<div style="padding: 100px">
+    <input type="search" id="search-input">
+    <ul id="results-list"></ul>
+</div>
+
+
+
+#{set 'moreScripts'}
+    #{get 'moreScripts' /}
+    <script>
+        (function($){
+            var getAutoCompleteDataAction = #{jsAction @Application.getAutoCompleteData(':q') /}
+
+            var $resultsList,
+                DOWN_ARROW_KEY_CODE = 40,
+                UP_ARROW_KEY_CODE = 38;
+            $(function () {
+                $resultsList = $('#results-list');
+
+                $('#search-input').on('keyup', function(){
+                    $resultsList.html('')
+                    var text = $(this).val();
+                    if (text.length > 0){
+                        $.ajax({
+                            url: getAutoCompleteDataAction({q:text}),
+                            type:'GET'
+                        }).done(function(results) {
+                            if (results.length) {
+                                var $results = "";
+                                for (var word of results) {
+                                    var splittedWord = word.split(text);
+                                    $results += '<li><a class="result-link" href="#">';
+                                        var index = 0;
+                                        for(var characters of splittedWord){
+                                            if(index > 0){
+                                                $results += '<mark>' + text + '</mark>';
+                                            }
+                                            $results += characters;
+                                            index ++;
+                                        }
+                                    $results += '</a></li>';
+                                }
+                            }
+                            $resultsList.html($results);
+
+                        }).fail(function() {
+                            console.error("An error has occured...");
+                        });
+                    }
+                });
+            });
+
+            $(document).on('keydown', '#search-input', function(evt){
+                if(evt.keyCode === DOWN_ARROW_KEY_CODE){
+                    if($('#results-list').find('li').length){
+                        $('#results-list').find('li').eq(0).find('a').focus();
+                    }
+                }
+            });
+
+            $(document).on('keydown', '.result-link', function(evt){
+                var currentIndex = $(this).parents('li').index(),
+                    $resultItem = $('#results-list').find('li');
+
+                if(evt.keyCode === DOWN_ARROW_KEY_CODE && currentIndex < $resultItem.length){
+                    $resultItem.eq(currentIndex + 1).find('a').focus();
+                }
+                else if(evt.keyCode === UP_ARROW_KEY_CODE && currentIndex > 0){
+                    $resultItem.eq(currentIndex - 1).find('a').focus();
+                }
+            });
+
+        })(jQuery);
+    </script>
+#{/set }

@@ -19,6 +19,10 @@ GET     /contact/?                                                              
 # Contact
 GET     /agenda/?                                                                  Application.agenda
 
+# AutoComplete
+GET     /auto-complete/?                                                           Application.autocomplete
+GET     /auto-complete-data/?                                                      Application.getAutoCompleteData
+
 # Panier
 GET     /panier                                                                    Panier.voirMonPanier
 GET     /panier/ajouter-async/{idProduit}                                          Panier.ajouterAuPanierJson
