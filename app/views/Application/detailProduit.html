@@ -11,12 +11,10 @@
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/detailProduit.css'}">
 
 <!--Fil d'ariane des categories-->
-<div class="">
-    <ol class="breadcrumb">
-        <li><a href="@{Application.index()}">Home</a></li>
-        <li class="active">${produit.categorie}</li>
-    </ol>
-</div>
+<ol class="breadcrumb">
+    <li><a href="@{Application.index()}">Home</a></li>
+    <li class="active">${produit.categorie}</li>
+</ol>
 
 <!--Image et info produit-->
 <div class="produit col-xs-12 col-sm-9">

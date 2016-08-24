@@ -1,9 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
-#{ifErrors}
-<h1>Oops…</h1>
-#{/ifErrors}
+<ol class="breadcrumb">
+    <li><a href="@{Application.index()}">Home</a></li>
+    <li><a href="@{Admin.index()}">Admin</a></li>
+    <li><a href="@{Admin.produits()}">Produits</a></li>
+    <li class="active">Nouveau Produit</li>
+</ol>
 
 <form action="@{Admin.enregistrerNouveauProduit()}" method="post">
     <h2>Créer un nouveau Produit</h2>

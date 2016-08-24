@@ -7,10 +7,10 @@
         <table class="table table-striped">
             #{list panier.produits, as:'produitPanier'}
             <tr>
-                <td class="col-xs-1">
-                    <p class="text-center"><a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite - 1)}"> - </a></p>
+                <td class="col-xs-1 vertAlign">
+                    <p class="text-center"><a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite - 1)}" class="glyphicon glyphicon-plus"></a></p>
                     <p class="text-center">${produitPanier.quantite}</p>
-                    <p class="text-center"><a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite + 1)}"> + </a></p>
+                    <p class="text-center"><a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite + 1)}" class="glyphicon glyphicon-minus"></a></p>
                 </td>
                 <td class="col-xs-4 col-sm-2">
                     <img src="@{'/public/images/produits/'}/${produitPanier.produit.image}" class="img-responsive" alt="image du produit">

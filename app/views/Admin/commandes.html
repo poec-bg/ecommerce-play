@@ -1,7 +1,11 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
-<a href="@{Admin.index()}">Retour</a>
+<ol class="breadcrumb">
+    <li><a href="@{Application.index()}">Home</a></li>
+    <li><a href="@{Admin.index()}">Admin</a></li>
+    <li class="active">Commandes</li>
+</ol>
 
 #{if commandes && commandes.size() > 0}
 <ul>

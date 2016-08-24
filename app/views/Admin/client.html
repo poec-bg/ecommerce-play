@@ -1,7 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
-<a href="@{Admin.index()}">Retour</a>
+<ol class="breadcrumb">
+    <li><a href="@{Application.index()}">Home</a></li>
+    <li><a href="@{Admin.index()}">Admin</a></li>
+    <li><a href="@{Admin.clients()}">Clients</a></li>
+    <li class="active">Client</li>
+</ol>
 
 <p>${client.nom} ${client.prenom}</p>
 <p>${client.email}</p>

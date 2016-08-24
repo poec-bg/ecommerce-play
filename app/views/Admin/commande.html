@@ -1,7 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
-<a href="@{Admin.index()}">Retour</a>
+<ol class="breadcrumb">
+    <li><a href="@{Application.index()}">Home</a></li>
+    <li><a href="@{Admin.index()}">Admin</a></li>
+    <li><a href="@{Admin.commandes()}">Commandes</a></li>
+    <li class="active">Commande</li>
+</ol>
 
 <p>${commande.date.toString("dd/MM/YYYY HH:mm")}</p>
 <p><a href="@{Admin.client(commande.client.id)}">${commande.client.nom} ${commande.client.prenom}</a></p>
