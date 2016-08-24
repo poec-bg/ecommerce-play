@@ -3,10 +3,12 @@
 
 
 <p>${flash.success}</p>
+<script src="public/javascripts/effet.js"></script>
 
 <div class="jumbotron">
 
     <h1>Bienvenue dans l'application Ecommerce</h1>
+
 
     <div class="container">
 
@@ -15,16 +17,16 @@
 
 
             #{list produits, as:'produit'}
-            <div class="col-sm-12 col-md-3" >
+            <div class="col-sm-12 col-md-3 containerImg">
 
                 <div class="thumbnail">
 
-                    <img src="${produit.image}" alt=${produit.nom} height="400px" width="700px">
+                    <img src="${produit.image}" alt=${produit.nom} class="image" height="auto" width="auto">
                     <div class="caption">
                         <h3 class="wrapEllipse"><a href="@{Application.detailProduitTest(produit.id)}">${produit.nom} :
                             ${produit.prixUnitaire} €</a></h3>
                         <p><a class="btn btn-primary btn-lg" href="@{Application.detailProduitTest(produit.id)}"
-                              role="button">Learn more »</a></p>
+                              role="button">Détail »</a></p>
 
                     </div>
                 </div>
@@ -38,7 +40,7 @@
         <footer>
 
             <div class="container">
-                <p class="text-muted">© 2016 Souleymane Inc / <a href="#">Contacts</a></p>
+                <p class="text-muted">© 2016 Souleymane Inc / <a href="/contact">Contacts</a></p>
 
             </div>
 

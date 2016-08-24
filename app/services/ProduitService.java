@@ -39,7 +39,7 @@ public class ProduitService {
         return instance;
     }
 
-    public Produit creer(String nom, String description, float prixUnitaire) throws InvalidArgumentException {
+    public Produit creer(String nom, String description, float prixUnitaire, String image) throws InvalidArgumentException {
 
         List<String> validationMessages = new ArrayList<>();
         if (Strings.isNullOrEmpty(nom)) {
@@ -57,6 +57,7 @@ public class ProduitService {
         produit.nom = nom;
         produit.description = description;
         produit.prixUnitaire = prixUnitaire;
+        produit.image= image;
         return produit;
     }
 
@@ -115,12 +116,14 @@ public class ProduitService {
 
     public void enregistrer(Produit produit) {
         try {
-            PreparedStatement preparedStatement = DBService.get().getConnection().prepareStatement("INSERT INTO Produit (`id`, `nom`, `description`, `prixUnitaire`, `isSupprime`) VALUES (?, ? , ? , ? , ?)");
+            PreparedStatement preparedStatement = DBService.get().getConnection().prepareStatement("INSERT INTO Produit (`id`, `nom`, `description`, `prixUnitaire`, `isSupprime`, `image`) VALUES (?, ? , ? , ? , ?, ?)");
             preparedStatement.setString(1, produit.id);
             preparedStatement.setString(2, produit.nom);
             preparedStatement.setString(3, produit.description);
             preparedStatement.setFloat(4, produit.prixUnitaire);
             preparedStatement.setBoolean(5, produit.isSupprime);
+            preparedStatement.setString(6, produit.image);
+
             preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
