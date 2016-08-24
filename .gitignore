@@ -21,6 +21,7 @@ nbproject
 *.iws
 server.pid
 modules
+node_modules
 cobertura.ser
 atlassian-ide-plugin.xml
 !conf/sql

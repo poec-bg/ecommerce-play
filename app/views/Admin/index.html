@@ -1,8 +1,15 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Panneau administration</div>
+        <div class="panel-body">
+            <ul>
+                <li><a href="@{Admin.produits()}"><img src="@{'/public/images/liste-produits.png'}" alt="Liste des produits"/></a></li>
+                <li><a href="@{Admin.clients()}"><img src="@{'/public/images/liste-utilisateurs.jpg'}" alt="Liste des clients"/></a></li>
+                <li><a href="@{Admin.commandes()}"><img src="@{'/public/images/liste-commandes.jpg'}" alt="Liste des commandes"/></a></li>
+            </ul>
+        </div>
+    </div>
 
-<ul>
-    <li><a href="@{Admin.produits()}">Liste des produits</a></li>
-    <li><a href="@{Admin.clients()}">Liste des clients</a></li>
-    <li><a href="@{Admin.commandes()}">Liste des commandes</a></li>
-</ul>
+</div>

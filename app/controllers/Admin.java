@@ -7,9 +7,7 @@ import exceptions.MetierException;
 import model.Client;
 import model.Commande;
 import model.Produit;
-import model.types.EUserRole;
 import play.data.validation.Email;
-import play.data.validation.Error;
 import play.data.validation.Min;
 import play.data.validation.Required;
 import play.mvc.Controller;
@@ -92,7 +90,7 @@ public class Admin extends Controller {
 
         try {
             Client client = ClientService.get().creer(email, email);
-            ClientService.get().modifier(client, nom, prenom, null, null);
+            ClientService.get().modifier(client, nom, prenom, null, null, null, false);
             ClientService.get().enregistrer(client);
         } catch (InvalidArgumentException | MetierException e) {
             error(e);
@@ -113,5 +111,39 @@ public class Admin extends Controller {
             error(e);
         }
         render(commande);
+    }
+
+    public static void supprimerClient(String idClient){
+        Client client = null;
+        try{
+            client = ClientService.get().getClient(idClient);
+            ClientService.get().supprimer(client);
+        } catch (InvalidArgumentException e) {
+            e.printStackTrace();
+        }
+        clients();
+    }
+
+    public static void modifierClient(String idClient){
+        Client client = null;
+        try {
+            client = ClientService.get().getClient(idClient);
+        } catch (InvalidArgumentException e) {
+            e.printStackTrace();
+        }
+        render(client);
+    }
+
+    public static void sauverClient(String idClient, String nom, String prenom, String adresse, String telephone, String role, boolean isSupprime){
+        Client client = null;
+        if(idClient != null || idClient != ""){
+            try {
+                client = ClientService.get().getClient(idClient);
+                ClientService.get().modifier(client,nom,prenom,adresse,telephone, role, isSupprime);
+            } catch (InvalidArgumentException e) {
+                e.printStackTrace();
+            }
+        }
+        clients();
     }
 }

@@ -4,7 +4,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mindrot.jbcrypt.BCrypt;
 import services.ClientService;
 import services.CommandeService;
 import services.PanierService;
@@ -36,7 +35,7 @@ public class ClientServiceTest {
         ClientService.get().clear();
         try {
             client = ClientService.get().creer("luke.skywalker@gmail.com", "iamyourfather");
-            ClientService.get().modifier(client, "Skywalker", "Luke", "2 rue de Mos Eisley, Tatooine", "0123456789");
+            ClientService.get().modifier(client, "Skywalker", "Luke", "2 rue de Mos Eisley, Tatooine", "0123456789", role, isSupprime);
         } catch (Exception e) {
             fail();
         }
@@ -140,7 +139,7 @@ public class ClientServiceTest {
 
         // When
         try {
-            ClientService.get().modifier(client, nom, prenom, adressePostale, telephone);
+            ClientService.get().modifier(client, nom, prenom, adressePostale, telephone, role, isSupprime);
             fail();
         } catch (InvalidArgumentException e) {
             // Then
@@ -158,7 +157,7 @@ public class ClientServiceTest {
 
         // When
         try {
-            ClientService.get().modifier(client, nom, prenom, adressePostale, telephone);
+            ClientService.get().modifier(client, nom, prenom, adressePostale, telephone, role, isSupprime);
 
             // Then
             assertEquals("Skywalker", client.nom);
@@ -177,7 +176,7 @@ public class ClientServiceTest {
 
         // When
         try {
-            ClientService.get().modifier(client, nom, prenom, adressePostale, telephone);
+            ClientService.get().modifier(client, nom, prenom, adressePostale, telephone, role, isSupprime);
 
             // Then
             assertEquals("Anakin Junior", client.prenom);
@@ -275,7 +274,7 @@ public class ClientServiceTest {
         Client client2 = null;
         try {
             client2 = ClientService.get().creer("han.solo@gmail.com", "0123456789");
-            ClientService.get().modifier(client2, "Solo", "Han", null, null);
+            ClientService.get().modifier(client2, "Solo", "Han", null, null, role, isSupprime);
         } catch (Exception e) {
             fail();
         }

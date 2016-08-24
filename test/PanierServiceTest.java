@@ -39,7 +39,7 @@ public class PanierServiceTest {
         ClientService.get().clear();
         try {
             client = ClientService.get().creer("luke.skywalker@gmail.com", "iamyourfather");
-            ClientService.get().modifier(client, "Skywalker", "Luke", "2 rue de Mos Eisley, Tatooine", "0123456789");
+            ClientService.get().modifier(client, "Skywalker", "Luke", "2 rue de Mos Eisley, Tatooine", "0123456789", role, isSupprime);
         } catch (Exception e) {
             fail();
         }

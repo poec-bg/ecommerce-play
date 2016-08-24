@@ -79,7 +79,7 @@ public class ClientService {
         return client;
     }
 
-    public void modifier(Client client, String nom, String prenom, String adressePostale, String telephone) throws InvalidArgumentException {
+    public void modifier(Client client, String nom, String prenom, String adressePostale, String telephone, String role, boolean isSupprime) throws InvalidArgumentException {
 
         List<String> validationMessages = new ArrayList<>();
         if (client == null) {
@@ -101,7 +101,24 @@ public class ClientService {
         if (!Strings.isNullOrEmpty(telephone)) {
             client.telephone = telephone;
         }
+        if (!Strings.isNullOrEmpty(role)) {
+            client.role = EUserRole.valueOf(role);
+        }
+        client.isSupprime = isSupprime;
 
+        String requete = "UPDATE Client SET nom=?, prenom=?, adressePostale=?, telephone=?, role=?, isSupprime=? WHERE id=?";
+        try {
+            PreparedStatement preparedStatement = DBService.get().getConnection().prepareStatement(requete);
+            preparedStatement.setString(1,client.nom);
+            preparedStatement.setString(2,client.prenom);
+            preparedStatement.setString(3,client.adressePostale);
+            preparedStatement.setString(4,client.telephone);
+            preparedStatement.setString(5,client.role.name());
+            preparedStatement.setBoolean(6,client.isSupprime);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void supprimer(Client client) throws InvalidArgumentException {
@@ -109,6 +126,15 @@ public class ClientService {
             throw new InvalidArgumentException(new String[]{"Le client ne peut être null"});
         }
         client.isSupprime = true;
+        String requete = "UPDATE Client SET isSupprime=? WHERE id=?";
+        try {
+            PreparedStatement preparedStatement = DBService.get().getConnection().prepareStatement(requete);
+            preparedStatement.setBoolean(1,client.isSupprime);
+            preparedStatement.setString(2,client.id);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public Client fusionner(Client client1, Client client2) throws InvalidArgumentException {

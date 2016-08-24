@@ -28,6 +28,9 @@ POST    /admin/produits/nouveau                                                 
 GET     /admin/clients                                                             Admin.clients
 GET     /admin/clients/nouveau                                                     Admin.creerNouveauClient
 POST    /admin/clients/nouveau                                                     Admin.enregistrerNouveauClient
+GET     /admin/clients/{idClient}/modifier                                         Admin.modifierClient
+GET     /admin/clients/{idClient}/supprimer                                        Admin.supprimerClient
+POST    /admin/clients/{idClient}/sauver                                           Admin.sauverClient
 
 # Ignore favicon requests
 GET     /favicon.ico                                                               404

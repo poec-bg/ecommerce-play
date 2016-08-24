@@ -2,16 +2,41 @@
 #{set title:'Admin' /}
 
 <a href="@{Admin.index()}">Retour</a>
-
+<div class="container">
 #{if clients && clients.size() > 0}
-    <ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Type</th>
+                <th>Supprim&eacute;</th>
+                <th>C.R.U.D.</th>
+            </tr>
+        </thead>
+        <tbody>
     #{list clients, as:'client'}
-        <li><a href="@{Admin.client(client.id)}">${client.prenom} ${client.nom} (${client.email})</a></li>
+        <tr>
+            <!--<a href="@{Admin.client(client.id)}"></a>-->
+            <td>${client.prenom}</td>
+            <td>${client.nom}</td>
+            <td>(${client.email})</td>
+            <td>${client.role}</td>
+            <td>${client.isSupprime}</td>
+            <td>
+                <a href="@{Admin.modifierClient(client.id)}"><img src="@{'/public/images/modifier-utilisateur.jpg'}"/></a>
+                #{if client.isSupprime == false}
+                <a href="@{Admin.supprimerClient(client.id)}"><img src="@{'/public/images/supprimer-utilisateur.jpg'}"/> </a>
+                #{/if}
+            </td>
+        </tr>
     #{/list}
-    </ul>
+        </tbody>
+    </table>
 #{/if}
 #{else}
     <p><i>Aucun client</i></p>
 #{/else}
-
+</div>
 <a href="@{Admin.creerNouveauClient()}">Nouveau Client</a>
