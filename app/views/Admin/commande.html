@@ -8,12 +8,38 @@
     <li class="active">Commande</li>
 </ol>
 
-<p>${commande.date.toString("dd/MM/YYYY HH:mm")}</p>
-<p><a href="@{Admin.client(commande.client.id)}">${commande.client.nom} ${commande.client.prenom}</a></p>
-<p>${commande.montant} €</p>
+<!--Pannel info sur la commande-->
+<div class="col-xs-11 col-sm-6 col-xs-offset-1 panel panel-primary">
+    <p>Date de la commande : ${commande.date.toString("dd/MM/YYYY HH:mm")}</p>
+    <p>Client : <a href="@{Admin.client(commande.client.id)}">${commande.client.nom} ${commande.client.prenom}</a></p>
+</div>
 
 <ul>
-#{list commande.produits, as:'produitCommande'}
-    <li><a href="@{Admin.produit(produitCommande.produit.id)}">${produitCommande.produit.nom}</a> x ${produitCommande.quantite}, PU : ${produitCommande.prixUnitaire} €, montant : ${(produitCommande.prixUnitaire * produitCommande.quantite).format("0.##")} €</li>
-#{/list}
+
+<!--Tableau des produits de la commande-->
+<div class="col-xs-12 panel panel-default">
+    <table class="table table-striped">
+    #{list commande.produits, as:'produitCommande'}
+        <tr>
+            <td class="col-xs-4 col-sm-2">
+                <img src="@{'/public/images/produits/'}/${produitCommande.produit.image}" class="img-responsive" alt="image du produit">
+            </td>
+            <td class="col-xs-6 col-sm-7">
+                <p><a href="@{Application.detailProduit(produitCommande.produit.id)}">${produitCommande.produit.nom}</a></p>
+                <p>${produitCommande.produit.description}</p>
+            </td>
+            <td class="col-xs-1 col-sm-2 vertAlign">
+                <p class="text-center">${produitCommande.quantite} x ${produitCommande.prixUnitaire}€</p>
+                <h3 class="text-center">${(produitCommande.prixUnitaire * produitCommande.quantite).format("0.##")} €</h3>
+                <p class="prixLgn hidden"> ${produitCommande.produit.prixUnitaire * produitCommande.quantite}</p>
+            </td>
+        </tr>
+    #{/list}
+        <tr>
+            <td class="col-xs-4 col-sm-2"></td>
+            <td class="col-xs-6 col-sm-7 text-right"><h3>Total :</h3></td>
+            <td class="col-xs-1 col-sm-2 vertAlign text-center"><h3>${commande.montant} €</h3></td>
+        </tr>
+    </table>
+</div>
 </ul>

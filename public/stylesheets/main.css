@@ -68,6 +68,6 @@ body {
     padding-bottom:100%;
 }
 
-.vignetteProd img{
+.vignetteProd .img{
     position:absolute;
 }
