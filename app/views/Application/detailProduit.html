@@ -4,12 +4,11 @@
 <meta property="og:type" content="product" />
 <meta property="og:title" content="${produit.nom}" />
 <meta property="og:description" content="${produit.description}" />
-<meta property="og:image" content="@{'/public/images/boulierchinoisbig.jpg'}" />
+<meta property="og:image" content="@{'/public/images/produits/'}/${produit.image}" />
 <meta property="og:type" content="product" />
 
 <!--css-->
 <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/detailProduit.css'}">
-<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
 <!--Fil d'ariane des categories-->
 <div class="">
@@ -21,7 +20,7 @@
 
 <!--Image et info produit-->
 <div class="produit col-xs-12 col-sm-9">
-    <img src="@{'/public/images/boulierchinoisbig.jpg'}" class="img-responsive produit-img col-xs-12 col-sm-6" alt="image du produit">
+    <img src="@{'/public/images/produits/'}/${produit.image}" class="img-responsive produit-img col-xs-12 col-sm-6" alt="image du produit">
     <div class="col-xs-12 col-sm-6">
         <h3 class="produit-nom">${produit.nom}</h3>
         <p class="produit-desc">Description : ${produit.description}</p>
@@ -32,7 +31,7 @@
 
 <!--Panel ajout panier (info payment, livraison, promo)-->
 <!--<a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>-->
-<!--<a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>-->
+<a class="add-product-json-link" href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
 <div class="col-xs-11 col-sm-2 panel panel-primary">
     #{if true}
     <p class="text-danger"> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> En promotion jusqu'au 30 septembre 2016 !</p>
@@ -87,3 +86,9 @@
         </tr>
     </table>
 </div>
+
+
+#{set 'moreScripts'}
+    #{get 'moreScripts'/}
+    <script src="@{'/public/javascripts/product.js'}"></script>
+#{/set }

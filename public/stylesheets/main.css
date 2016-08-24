@@ -26,24 +26,44 @@ body {
     height: 2em;
 }
 
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../lib/fonts/glyphicons-halflings-regular.eot');
+  src: url('../lib/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../lib/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../lib/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../lib/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../lib/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.table tbody>tr>td.vertAlign{
+    vertical-align: middle;
+}
+
 /* ==========================================================================
   HEADER
 ========================================================================== */
 .header-elem{
     display: inline;
-    float: left;
     height: 100%;
-    width: 100%;
     text-align: center;
     padding-top: 1.0em;
 }
 
 .header-Home{
-    display: block;
+    display: inline;
     float: left;
-    height: 100%;
-    width: 100%;
     text-align: center;
     padding-top: 0.5em;
     font-size: 1.8em;
+}
+
+
+/* ==========================================================================
+  BODY
+========================================================================== */
+.vignetteProd{
+    position:relative;
+    overflow:hidden;
+    padding-bottom:100%;
+}
+
+.vignetteProd img{
+    position:absolute;
 }

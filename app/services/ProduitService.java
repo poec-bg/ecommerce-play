@@ -103,6 +103,8 @@ public class ProduitService {
                 produit.nom = result.getString("nom");
                 produit.description = result.getString("description");
                 produit.prixUnitaire = result.getFloat("prixUnitaire");
+                produit.categorie = result.getString("categorie");
+                produit.image = result.getString("image");
                 produit.isSupprime = result.getBoolean("isSupprime");
                 produitsDb.add(produit);
             }
@@ -127,7 +129,6 @@ public class ProduitService {
     }
 
     public Produit getProduit(String idProduit) throws InvalidArgumentException {
-
         List<String> validationMessages = new ArrayList<>();
         if (Strings.isNullOrEmpty(idProduit)) {
             validationMessages.add("L'idProduit ne peut être null ou vide");
@@ -146,6 +147,7 @@ public class ProduitService {
                 produit.description = result.getString("description");
                 produit.prixUnitaire = result.getFloat("prixUnitaire");
                 produit.categorie = result.getString("categorie");
+                produit.image = result.getString("image");
                 produit.isSupprime = result.getBoolean("isSupprime");
                 return produit;
             }

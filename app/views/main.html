@@ -13,13 +13,15 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="login-url" content="@{secure.Secure.login()}" />
     <meta property="og:site_name" content="Fnox.com" />
-
-
     <meta charset="${_response_encoding}">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="@{'/public/stylesheets/bootstrap.css'}">
+    <link rel="stylesheet" href="@{'/public/stylesheets/bootstrap-theme.css'}">
+    <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
     <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
     #{get 'moreStyles' /}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
 </head>
 <body>
 <header id="headerMain" class="navbar navbar-default navbar-fixed-top" role="banner">
@@ -47,7 +49,8 @@
     <p class="text-muted col-xs-12 col-md-6"><a href="mail:serviceClient@monsite.org">Contacts: serviceClient@monsite.org</a> </p>
 </footer>
 
-<script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!--<script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 #{get 'moreScripts' /}
 </body>

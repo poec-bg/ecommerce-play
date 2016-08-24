@@ -1,19 +1,46 @@
 #{extends 'main.html' /}
 #{set title:'Mon panier' /}
 
-<a href="@{Application.index()}">Retour</a>
-
+<h1>Votre panier</h1>
 #{if panier.produits && panier.produits.size() > 0}
-<ul>
-    #{list panier.produits, as:'produitPanier'}
-        <li><a href="@{Application.detailProduit(produitPanier.produit.id)}">${produitPanier.produit.nom}</a> x ${produitPanier.quantite}, PU : ${produitPanier.produit.prixUnitaire} €, montant : ${(produitPanier.produit.prixUnitaire * produitPanier.quantite).format("0.##")} €
-            <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite - 1)}"> - </a>
-            <a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite + 1)}"> + </a>
-            <a href="@{Panier.retirer(produitPanier.produit.id)}" > x </a></li>
-    #{/list}
-</ul>
-<a href="@{Panier.passerCommande()}">Passer commande</a>
+    <div class="col-xs-12 panel panel-default">
+        <table class="table table-striped">
+            #{list panier.produits, as:'produitPanier'}
+            <tr>
+                <td class="col-xs-1">
+                    <p class="text-center"><a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite - 1)}"> - </a></p>
+                    <p class="text-center">${produitPanier.quantite}</p>
+                    <p class="text-center"><a href="@{Panier.modifierQuantite(produitPanier.produit.id, produitPanier.quantite + 1)}"> + </a></p>
+                </td>
+                <td class="col-xs-4 col-sm-2">
+                    <img src="@{'/public/images/produits/'}/${produitPanier.produit.image}" class="img-responsive" alt="image du produit">
+                </td>
+                <td class="col-xs-6 col-sm-7">
+                    <p><a href="@{Application.detailProduit(produitPanier.produit.id)}">${produitPanier.produit.nom}</a></p>
+                    <p>${produitPanier.produit.description}</p>
+                </td>
+                <td class="col-xs-1 col-sm-2 vertAlign">
+                    <h3 class="text-center">${(produitPanier.produit.prixUnitaire * produitPanier.quantite).format("0.##")} €</h3>
+                    <p class="prixLgn hidden"> ${produitPanier.produit.prixUnitaire * produitPanier.quantite}</p>
+                    <h4 class="text-center"><a href="@{Panier.retirer(produitPanier.produit.id)}" class="glyphicon glyphicon-remove text-danger"></a></h4>
+                </td>
+            </tr>
+            #{/list}
+            <tr>
+                <td class="col-xs-1"></td>
+                <td class="col-xs-4 col-sm-2"></td>
+                <td class="col-xs-6 col-sm-7 text-right"> <h3>Sous-Total :</h3> </td>
+                <td class="col-xs-1 col-sm-2 text-center"><h3 id="sousTotalPanier">- €</h3></td>
+            </tr>
+        </table>
+    </div>
+    <h3 class="text-center"><a href="@{Panier.passerCommande()}">Passer commande</a></h3>
 #{/if}
 #{else}
-<p><i>Aucun produit dans le panier</i></p>
+    <p class="text-center"><i>Aucun produit dans le panier</i></p>
 #{/else}
+
+#{set 'moreScripts'}
+    #{get 'moreScripts'/}
+    <script type="text/javascript" src="@{'/public/javascripts/panier.js'}"></script>
+#{/set}

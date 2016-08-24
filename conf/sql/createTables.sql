@@ -18,6 +18,7 @@ CREATE TABLE `Produit` (
   `description` VARCHAR(400) NULL,
   `prixUnitaire` FLOAT NOT NULL,
   `categorie` VARCHAR(45) NULL,
+  `image` VARCHAR(45) NULL,
   `isSupprime` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC));

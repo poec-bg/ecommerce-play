@@ -1,12 +1,18 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<h1>Bienvenue dans l'application ECommerce</h1>
-
+<h1>Bienvenue chez Fnox</h1>
 <p>${flash.success}</p>
 
-<ul>
+
 #{list produits, as:'produit'}
-    <li><a href="@{Application.detailProduit(produit.id)}">${produit.nom} : ${produit.prixUnitaire} €</a></li>
+    <div class="col-xs-12 col-sm-3 col-lg-2 thumbnail">
+        <a href="@{Application.detailProduit(produit.id)}">
+            <div class="vignetteProd">
+                <img src="@{'/public/images/produits/'}/${produit.image}" class="img img-responsive full-width" alt="${produit.nom}">
+            </div>
+            <p>${produit.nom}</p>
+        </a>
+        <p>${produit.prixUnitaire} €</p>
+    </div>
 #{/list}
-</ul>
