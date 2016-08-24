@@ -25,7 +25,8 @@
             <form action="@{Panier.modifierQuantite()}" method="post">
                 <input type="hidden" name="idProduit" value="${produit.id}">
                 <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
-                <p><input type="submit" value="Ajouter au Panier"></p>
+                <p><input type="submit" value="Ajouter au Panier">
+                    <a href="@{Panier.ajouterAuPanierJson(produit.id)}" class="JSON">Ajouter au panier en Json</a></p>
             </form>
 
             <img src="http://westingmediastudio.com/wp-content/themes/shopperpress/thumbs/secure-cc-paypal.gif"

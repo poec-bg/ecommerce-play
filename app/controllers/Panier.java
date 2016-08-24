@@ -54,6 +54,8 @@ public class Panier extends Controller {
         Application.detailProduitTest(idProduit);
     }
 
+
+
     public static void ajouterAuPanierJson(String idProduit) {
         model.Panier panier = ajouterAuPanierEnNormalOuJson(idProduit);
         renderJSON(panier);
