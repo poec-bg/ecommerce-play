@@ -29,7 +29,7 @@
 
 <!--Panel ajout panier (info payment, livraison, promo)-->
 <!--<a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>-->
-<a class="add-product-json-link" href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
+<!--<a class="add-product-json-link" href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>-->
 <div class="col-xs-11 col-sm-2 panel panel-primary">
     #{if true}
     <p class="text-danger"> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> En promotion jusqu'au 30 septembre 2016 !</p>
@@ -41,7 +41,7 @@
         <p class="text-danger"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Indisponible pour le moment.</p>
     #{/else}
     <p class="text-info"> <span class="glyphicon glyphicon-send" aria-hidden="true"></span>  Livraison sous 48h.</p>
-    <form  class="form-horizontal" action="@{Panier.modifierQuantite()}" method="post">
+    <form  class="form-horizontal" action="@{Panier.modifierQuantite()}" method="post" id="formAjoutPanier">
         <div class="form-group form-group-sm">
             <input type="hidden" name="idProduit" value="${produit.id}">
             <label  class="col-xs-5 control-label" for="formAddNb">Quantité :</label>
@@ -51,11 +51,10 @@
         </div>
         <p><input type="submit" value="Ajouter au Panier"></p>
     </form>
-
+    <p>${flash.success}</p>
     <p>Payments disponibles : <span class="fa fa-cc-mastercard" aria-hidden="true"></span> <span class="fa fa-cc-visa" aria-hidden="true"></span>  <span class="fa fa-cc-paypal" aria-hidden="true"></span></p>
 </div>
 
-<p>${flash.success}</p>
 
 
 <!--avis utilisateur-->
