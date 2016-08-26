@@ -27,39 +27,14 @@ public class Panier extends Controller {
 
             panier = PanierService.get().getPanier(client);
             notFoundIfNull(panier);
+
+            render(panier);
         } catch (InvalidArgumentException e) {
             error(e);
         }
-        render(panier);
-    }
-
-    public static void panierJson() {
-        Client client = null;
-        model.Panier panier = null;
-        try {
-            client = Security.connectedUser();
-            notFoundIfNull(client);
-
-            panier = PanierService.get().getPanier(client);
-            notFoundIfNull(panier);
-        } catch (InvalidArgumentException e) {
-            error(e);
-        }
-        renderJSON(panier);
     }
 
     public static void ajouterAuPanier(String idProduit) {
-        ajouterAuPanierEnNormalOuJson(idProduit);
-        flash.success("Le produit a bien été ajouté à votre panier");
-        Application.detailProduit(idProduit);
-    }
-
-    public static void ajouterAuPanierJson(String idProduit) {
-        model.Panier panier = ajouterAuPanierEnNormalOuJson(idProduit);
-        renderJSON(panier);
-    }
-
-    private static model.Panier ajouterAuPanierEnNormalOuJson(String idProduit) {
         Client client = null;
         model.Panier panier = null;
         Produit produit = null;
@@ -73,12 +48,20 @@ public class Panier extends Controller {
             panier = PanierService.get().getPanier(client);
             notFoundIfNull(panier);
 
-            panier = PanierService.get().ajouterProduit(panier, produit);
+            if(isProduitDansPanier(panier, produit)>0) {
+                PanierService.get().modifierQuantite(panier, produit, isProduitDansPanier(panier, produit)+1);
+            } else {
+                PanierService.get().ajouterProduit(panier, produit);
+                PanierService.get().modifierQuantite(panier, produit, 1);
+            }
+            flash.success("Le produit a bien été ajouté à votre panier");
+            voirMonPanier();
 
         } catch (InvalidArgumentException e) {
             error(e);
+//            Application.index();
         }
-        return panier;
+
     }
 
     public static void modifierQuantite(String idProduit, Integer quantite) {
@@ -94,7 +77,7 @@ public class Panier extends Controller {
 
             produit = ProduitService.get().getProduit(idProduit);
 
-            if(isProduitDansPanier(panier, produit)) {
+            if(isProduitDansPanier(panier, produit)>0) {
                 PanierService.get().modifierQuantite(panier, produit, quantite);
             } else {
                 PanierService.get().ajouterProduit(panier, produit);
@@ -107,13 +90,14 @@ public class Panier extends Controller {
         voirMonPanier();
     }
 
-    private static boolean isProduitDansPanier(model.Panier panier, final Produit produit) {
+    private static int isProduitDansPanier(model.Panier panier, final Produit produit) {
         for (ProduitPanier produitPanier : panier.produits) {
             if(produitPanier.produit.id.equals(produit.id)) {
-                return true;
+
+                return produitPanier.quantite;
             }
         }
-        return false;
+        return 0;
     }
 
     public static void retirer(String idProduit) {

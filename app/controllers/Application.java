@@ -48,7 +48,8 @@ public class Application extends Controller {
         } catch (InvalidArgumentException | MetierException e) {
             error(e);
         }
-        Application.index();
+//        Application.index();
+        controllers.secure.Secure.login();
     }
 
     public static void presentation(){
@@ -58,6 +59,14 @@ public class Application extends Controller {
     public static void getAsyncPresentationMessage(String name, String signature){
         String videoCode = "1NKWop13q7I";
         renderTemplate("tags/presentation-message.html", name, signature);
+    }
+
+    public static void aPropos() {
+        render();
+    }
+
+    public static void contact() {
+        render();
     }
 
 
