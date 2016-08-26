@@ -80,7 +80,7 @@ public class ClientService {
         return client;
     }
 
-    public void modifier(Client client, String nom, String prenom, String adressePostale, String telephone) throws InvalidArgumentException {
+    public void modifier(Client client, String nom, String prenom, String email, String adressePostale, String telephone) throws InvalidArgumentException {
 
         List<String> validationMessages = new ArrayList<>();
         if (client == null) {
@@ -95,6 +95,9 @@ public class ClientService {
         }
         if (!Strings.isNullOrEmpty(prenom)) {
             client.prenom = prenom;
+        }
+        if (!Strings.isNullOrEmpty(email)) {
+            client.email = email;
         }
         if (!Strings.isNullOrEmpty(adressePostale)) {
             client.adressePostale = adressePostale;
@@ -191,17 +194,32 @@ public class ClientService {
     }
 
     public void enregistrer(Client client) {
+
         try {
-            PreparedStatement preparedStatement = DBService.get().getConnection().prepareStatement("INSERT INTO Client (`id`, `nom`, `email`, `motDePasse`, `prenom`, `adressePostale`, `telephone`, `role`, `isSupprime`) VALUES (?, ? , ? , ? , ?, ?, ?, ?, ?)");
-            preparedStatement.setString(1, client.id);
-            preparedStatement.setString(2, client.nom);
-            preparedStatement.setString(3, client.email);
-            preparedStatement.setString(4, client.motDePasse);
-            preparedStatement.setString(5, client.prenom);
-            preparedStatement.setString(6, client.adressePostale);
-            preparedStatement.setString(7, client.telephone);
-            preparedStatement.setString(8, client.role.name());
-            preparedStatement.setBoolean(9, client.isSupprime);
+            PreparedStatement preparedStatement;
+            if (DBService.get().getConnection().createStatement().executeQuery("SELECT id FROM Client WHERE id = " + "'" + client.id + "'").next() == false){
+                preparedStatement = DBService.get().getConnection().prepareStatement("INSERT INTO Client (`id`, `nom`, `email`, `motDePasse`, `prenom`, `adressePostale`, `telephone`, `role`, `isSupprime`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                preparedStatement.setString(1, client.id);
+                preparedStatement.setString(2, client.nom);
+                preparedStatement.setString(3, client.email);
+                preparedStatement.setString(4, client.motDePasse);
+                preparedStatement.setString(5, client.prenom);
+                preparedStatement.setString(6, client.adressePostale);
+                preparedStatement.setString(7, client.telephone);
+                preparedStatement.setString(8, client.role.name());
+                preparedStatement.setBoolean(9, client.isSupprime);
+            }
+            else{
+                preparedStatement = DBService.get().getConnection().prepareStatement("UPDATE Client SET `nom` = ?, `email` = ?, `motDePasse` = ?, `prenom` = ?, `adressePostale` = ?, `telephone` = ?, `role` = ?, `isSupprime` = ? WHERE id =" + "'" + client.id + "'");
+                preparedStatement.setString(1, client.nom);
+                preparedStatement.setString(2, client.email);
+                preparedStatement.setString(3, client.motDePasse);
+                preparedStatement.setString(4, client.prenom);
+                preparedStatement.setString(5, client.adressePostale);
+                preparedStatement.setString(6, client.telephone);
+                preparedStatement.setString(7, client.role.name());
+                preparedStatement.setBoolean(8, client.isSupprime);
+            }
             preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
