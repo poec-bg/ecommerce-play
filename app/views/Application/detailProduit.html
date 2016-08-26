@@ -1,21 +1,53 @@
 #{extends 'main.html' /}
 #{set title:'Détail Produit' /}
 
-<a href="@{Application.index()}">Retour</a>
+<ol class="breadcrumb">
+    <li>
+        <a href="@{Application.index()}">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
 
-<p>${produit.nom}</p>
-<p>${produit.description}</p>
-<p>${produit.prixUnitaire} €</p>
+    <li class="active">${produit.nom}</li>
+</ol>
+
+<div class="container">
+    <div>
+        ${flash.success}
+    </div>
+    <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-offset-4 col-md-4 ">
+        <div class="panel panel-default">
+            <div class="panel-heading ">
+                <h2 class="">${produit.nom}
+                        <span class="label label-info">Nouveau !</span>
+                </h2>
+            </div>
+            <div class="panel-body">
+                <img class="image-max " src="${produit.image}" alt="${produit.nom}">
+                <p>${produit.description}</p>
+
+                <h2>A l'unité :
+                    <span class="label label-default">${produit.prixUnitaire} €</span>
+                </h2>
+            </div>
+            <div class="panel-footer">
+                <form class="center-block" action="@{Panier.modifierQuantite()}" method="post">
+                    <input class="btn btn-primary" type="submit" value="Ajouter au Panier">
+                    <div class="input-group input-group-md">
+                        <input type="hidden" name="idProduit" value="${produit.id}">
+                        <span class="input-group-addon" id="basic-addon1">
+                            Quantité :
+                        </span>
+                        <input type="number" name="quantite" value="1" min="1">
+                    </div>
+                    <span>
+
+                    </span>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-<a href="@{Panier.ajouterAuPanier(produit.id)}">Ajouter au panier</a>
 
-<a href="@{Panier.ajouterAuPanierJson(produit.id)}">Ajouter au panier en Json</a>
-
-<form action="@{Panier.modifierQuantite()}" method="post">
-    <input type="hidden" name="idProduit" value="${produit.id}">
-    <p><label>Quantité : </label><input type="number" name="quantite" value="1" min="1"></p>
-    <p><input type="submit" value="Ajouter au Panier"></p>
-</form>
-
-<p>${flash.success}</p>

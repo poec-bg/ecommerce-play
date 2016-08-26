@@ -1,15 +1,35 @@
 #{extends 'secure/Secure/template.html' /}
 #{set title:'Produit' /}
 
-<form id="form-login" action="@{secure.Secure.authenticate()}" method="POST" class="form-signin" role="form">
-    <hr class="colorgraph">
-    <input type="email" class="form-control" id="email" name="username" placeholder="Email" value="${flash.get("email")}" required autofocus>
-    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox" name="remember"> Se souvenir de moi
-        </label>
-    </div>
-    <button class="btn btn-lg btn-success btn-block" type="submit">S'authentifier</button>
-    <a href="@{Application.nouveauClient()}">Créer mon compte</a>
-</form>
+<ol class="breadcrumb">
+    <li>
+        <a href="@{Application.index()}">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+    <li class="active">connection</li>
+</ol>
+
+<div class="container col-sm-offset-4 col-sm-4 col-lg-offset-4 col-lg-4">
+    <form id="form-login" action="@{secure.Secure.authenticate()}" method="POST" class="form-signin" role="form">
+        <hr class="colorgraph">
+        <div class="input-group input-group-md">
+            <span class="input-group-addon" id="basic-addon1">E-mail</span>
+            <input type="email" class="form-control" id="email" name="username" placeholder="Email"
+                   value="${flash.get("email")}" required autofocus>
+        </div>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon" id="basic-addon2">Mot de passe</span>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="remember"> Se souvenir de moi
+            </label>
+        </div>
+        <button class="btn btn-md btn-primary btn-block" type="submit">S'authentifier</button>
+        <br>
+        <a class="pull-left btn btn-success" href="@{Application.nouveauClient()}">Créer mon compte</a>
+        <a class="pull-right btn btn-warning" href="@{Application.index()}">Annuler</a>
+    </form>
+</div>

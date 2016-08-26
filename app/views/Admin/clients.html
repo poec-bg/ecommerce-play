@@ -1,17 +1,50 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
-<a href="@{Admin.index()}">Retour</a>
+<ol class="breadcrumb">
+    <li>
+        <a href="@{Application.index()}">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+    <li>
+        <a href="@{Admin.index()}">
+            <span class="glyphicon glyphicon-font"></span>
+        </a>
+    </li>
+    <li class="active">liste clients</li>
+</ol>
 
-#{if clients && clients.size() > 0}
-    <ul>
-    #{list clients, as:'client'}
-        <li><a href="@{Admin.client(client.id)}">${client.prenom} ${client.nom} (${client.email})</a></li>
-    #{/list}
-    </ul>
-#{/if}
-#{else}
-    <p><i>Aucun client</i></p>
-#{/else}
 
-<a href="@{Admin.creerNouveauClient()}">Nouveau Client</a>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"> Liste des clients </div>
+        <table class="table">
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+            </tr>
+            #{if clients && clients.size() > 0}
+            #{list clients, as:'client'}
+            <tr>
+                <td>
+                    <a href="@{Admin.client(client.id)}">${client.prenom}</a>
+                </td>
+                <td>
+                    <a href="@{Admin.client(client.id)}">${client.nom}</a>
+                </td>
+                <td>
+                    <a href="@{Admin.client(client.id)}">${client.email}</a>
+                </td>
+            </tr>
+            #{/list}
+            #{/if}
+            #{else}
+            <p><i>Aucun client</i></p>
+            #{/else}
+        </table>
+    </div>
+    <a class="btn btn-primary" href="@{Admin.creerNouveauClient()}">Nouveau Client</a>
+</div>
+

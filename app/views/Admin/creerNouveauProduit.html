@@ -1,14 +1,55 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
-#{ifErrors}
-<h1>Oops…</h1>
-#{/ifErrors}
+<ol class="breadcrumb">
+    <li>
+        <a href="@{Application.index()}">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+    <li>
+        <a href="@{Admin.index()}">
+            <span class="glyphicon glyphicon-font"></span>
+        </a>
+    </li>
+    <li>
+        <a href="@{Admin.produits()}">Liste des produits</a>
+    </li>
+    <li class="active">Nouveaux</li>
+</ol>
 
-<form action="@{Admin.enregistrerNouveauProduit()}" method="post">
-    <h2>Créer un nouveau Produit</h2>
-    <p><label>Nom :</label><input type="text" name="nom"><span class="error">#{error 'nom' /}</span></p>
-    <p><label>Description :</label><input type="text" name="description"><span class="error">#{error 'description' /}</span></p>
-    <p><label>Prix Unitaire :</label><input type="text" name="prixUnitaire"><span class="error">#{error 'prixUnitaire' /}</span></p>
-    <p><input type="submit" value="Créer"><a href="@{Admin.produits()}">Annuler</a></p>
-</form>
+<div class="container col-sm-offset-4 col-sm-4 col-lg-offset-4 col-lg-4 clearfix">
+    #{ifErrors}
+    <h1>Try again !</h1>
+    #{/ifErrors}
+
+    <form action="@{Admin.enregistrerNouveauProduit()}" method="post">
+        <h2>Créer un nouveau Produit</h2>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon" id="basic-addon1">Nom</span>
+            <input type="text" class="form-control" name="nom">
+            <span class="error">#{error 'nom' /}</span>
+        </div>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon" id="basic-addon2">Description</span>
+            <input type="text" class="form-control" name="description">
+            <span class="error">#{error 'description' /}</span>
+        </div>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon" id="basic-addon3">Prix unitaire</span>
+            <input type="text" class="form-control" name="prixUnitaire">
+            <span class="error">#{error 'prixUnitaire' /}</span>
+        </div>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon" id="basic-addon4">Image</span>
+            <input type="text" class="form-control" name="image">
+            <span class="error">#{error 'image' /}</span>
+        </div>
+        <div class="pull-left input-group input-group-md">
+            <input type="submit" value="Créer" class="btn btn-primary">
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-warning" href="@{Admin.produits()}">Annuler</a>
+        </div>
+    </form>
+</div>

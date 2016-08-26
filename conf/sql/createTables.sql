@@ -18,6 +18,7 @@ CREATE TABLE `Produit` (
   `description` VARCHAR(45) NULL,
   `prixUnitaire` FLOAT NOT NULL,
   `isSupprime` TINYINT(1) NOT NULL DEFAULT 0,
+  `image` VARCHAR(255) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC));
 
@@ -48,4 +49,5 @@ CREATE TABLE `ProduitCommande` (
   `idProduit` VARCHAR(255) NOT NULL,
   `quantite` INT NOT NULL,
   `prixUnitaire` FLOAT NOT NULL,
-  PRIMARY KEY (`idCommande`, `idProduit`));
+  PRIMARY KEY (`idCommande`, `idProduit`),
+  CONSTRAINT `idProduit` FOREIGN KEY (`id`) REFERENCES Produit);

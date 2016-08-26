@@ -47,7 +47,7 @@ public class Admin extends Controller {
         render();
     }
 
-    public static void enregistrerNouveauProduit(@Required String nom, @Required String description, @Required @Min(0) Float prixUnitaire) {
+    public static void enregistrerNouveauProduit(@Required String nom, @Required String description, @Required @Min(0) Float prixUnitaire, String image) {
         if (validation.hasErrors()) {
             params.flash(); // add http parameters to the flash scope
             validation.keep(); // keep the errors for the next request
@@ -55,7 +55,7 @@ public class Admin extends Controller {
         }
 
         try {
-            Produit produit = ProduitService.get().creer(nom, description, prixUnitaire);
+            Produit produit = ProduitService.get().creer(nom, description, prixUnitaire, image);
             ProduitService.get().enregistrer(produit);
         } catch (InvalidArgumentException e) {
             error(e);

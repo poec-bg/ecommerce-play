@@ -1,8 +1,18 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
-<ul>
-    <li><a href="@{Admin.produits()}">Liste des produits</a></li>
-    <li><a href="@{Admin.clients()}">Liste des clients</a></li>
-    <li><a href="@{Admin.commandes()}">Liste des commandes</a></li>
-</ul>
+<ol class="breadcrumb">
+    <li>
+        <a href="@{Application.index()}">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+    <li class="active"><span class="glyphicon glyphicon-font"></span> </li>
+</ol>
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item"><a href="@{Admin.produits()}">Liste des produits</a></li>
+        <li class="list-group-item"><a href="@{Admin.clients()}">Liste des clients</a></li>
+        <li class="list-group-item"><a href="@{Admin.commandes()}">Liste des commandes</a></li>
+    </ul>
+</div>

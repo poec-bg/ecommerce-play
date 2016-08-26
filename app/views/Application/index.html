@@ -1,12 +1,46 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<h1>Bienvenue dans l'application ECommerce</h1>
 
-<p>${flash.success}</p>
+<div class="container">
 
-<ul>
-#{list produits, as:'produit'}
-    <li><a href="@{Application.detailProduit(produit.id)}">${produit.nom} : ${produit.prixUnitaire} €</a></li>
-#{/list}
-</ul>
+    <h1 class="alert alert-info">Bienvenue sur ECommerce 2016</h1>
+
+    <div>${flash.success}</div>
+
+    #{list produits, as:'produit'}
+    #{if produit.isSupprime == false}
+
+    <div class="col-xs-12 col-sm-6 col-md-4 ">
+        <div class="panel panel-default">
+            <div class="panel-heading ">
+                <div class="panel-title clearfix">
+                    <h4 class="pull-left">
+                        ${produit.nom}
+                    </h4>
+                    <h4 class="pull-right">
+                        <span class="label label-default">${produit.prixUnitaire} €</span>
+                    </h4>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="cadre-image-nor center-block">
+                    <img class="image-nor center-block" src="${produit.image}" alt="${produit.nom}">
+                </div>
+                <p>${produit.description}</p>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-left">
+                    <a href="@{Panier.ajouterAuPanier(produit.id)}" class="btn btn-primary" role="button">Commander</a>
+                </div>
+                <div class="pull-right">
+                    <a href="@{Application.detailProduit(produit.id)}" class="btn btn-default" role="button">Détails</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    #{/if}
+    #{/list}
+</div>

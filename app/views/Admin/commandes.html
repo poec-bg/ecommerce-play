@@ -1,15 +1,54 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
-<a href="@{Admin.index()}">Retour</a>
 
-#{if commandes && commandes.size() > 0}
-<ul>
-    #{list commandes, as:'commande'}
-        <li><a href="@{Admin.commande(commande.id)}">${commande.date.toString("dd/MM/YYYY HH:mm")} / ${commande.client.nom} ${commande.client.prenom} : ${commande.montant} €</a></li>
-    #{/list}
-</ul>
-#{/if}
-#{else}
-<p><i>Aucune commande</i></p>
-#{/else}
+<ol class="breadcrumb">
+    <li>
+        <a href="@{Application.index()}">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+    <li>
+        <a href="@{Admin.index()}">
+            <span class="glyphicon glyphicon-font"></span>
+        </a>
+    </li>
+    <li class="active">liste commandes</li>
+</ol>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"> Liste des commandes </div>
+        <table class="table table-striped">
+            <tr>
+                <th>Date Heure</th>
+                <th>Nom Prénom</th>
+                <th>Montant (€)</th>
+            </tr>
+
+            #{if commandes && commandes.size() > 0}
+            #{list commandes, as:'commande'}
+            <tr>
+                <td>
+                    <a href="@{Admin.commande(commande.id)}">
+                        ${commande.date.toString("dd/MM/YYYY HH:mm")}
+                    </a>
+                </td>
+                <td>
+                    <a href="@{Admin.commande(commande.id)}">
+                    ${commande.client.nom} ${commande.client.prenom}
+                    </a>
+                </td>
+                <td>
+                    <a href="@{Admin.commande(commande.id)}">
+                    ${commande.montant}
+                    </a>
+                </td>
+                #{/list}
+            </tr>
+            #{/if}
+            #{else}
+            <p><i>Aucune commande</i></p>
+            #{/else}
+        </table>
+    </div>
+</div>

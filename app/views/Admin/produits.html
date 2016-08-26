@@ -1,17 +1,53 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
-<a href="@{Admin.index()}">Retour</a>
+<ol class="breadcrumb">
+    <li>
+        <a href="@{Application.index()}">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+    <li>
+        <a href="@{Admin.index()}">
+            <span class="glyphicon glyphicon-font"></span>
+        </a>
+    </li>
+    <li class="active">liste produits</li>
+</ol>
 
-#{if produits && produits.size() > 0}
-    <ul>
-    #{list produits, as:'produit'}
-        <li><a href="@{Admin.produit(produit.id)}">${produit.nom}</a> : ${produit.prixUnitaire} €</li>
-    #{/list}
-    </ul>
-#{/if}
-#{else}
-    <p><i>Aucun produit</i></p>
-#{/else}
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"> Liste des produits </div>
+        <table class="table">
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Stock</th>
+            </tr>
 
-<a href="@{Admin.creerNouveauProduit()}">Nouveau Produit</a>
+            #{if produits && produits.size() > 0}
+
+
+            #{list produits, as:'produit'}
+            <tr>
+                <td >
+                    <a href="@{Admin.produit(produit.id)}">${produit.nom}</a>
+                </td>
+                <td >
+                    ${produit.prixUnitaire} €
+                </td>
+                <td></td>
+            </tr>
+            #{/list}
+
+        </table>
+            #{/if}
+            #{else}
+                <p><i>Aucun produit</i></p>
+            #{/else}
+
+
+    </div>
+    <a class="btn btn-primary" href="@{Admin.creerNouveauProduit()}">Nouveau Produit</a>
+</div>
+

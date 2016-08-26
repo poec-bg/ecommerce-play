@@ -1,15 +1,50 @@
 #{extends 'main.html' /}
 #{set title:'Créer mon compte' /}
 
-#{ifErrors}
-<h1>Oops…</h1>
-#{/ifErrors}
+<ol class="breadcrumb">
+    <li>
+        <a href="@{Application.index()}">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+    <li>
+        <a href="@{secure.Secure.login()}">Connection</a>
+    </li>
+    <li class="active">Création</li>
+</ol>
 
-<form action="@{Application.enregistrerNouveauClient()}" method="post">
-    <h2>Créer mon compte</h2>
-    <p><label>Nom :</label><input type="text" name="nom"><span class="error">#{error 'nom' /}</span></p>
-    <p><label>Prenom :</label><input type="text" name="prenom"><span class="error">#{error 'prenom' /}</span></p>
-    <p><label>Email :</label><input type="text" name="email"><span class="error">#{error 'email' /}</span></p>
-    <p><label>Mot de passe :</label><input type="password" name="motDePasse"><span class="error">#{error 'motDePasse' /}</span></p>
-    <p><input type="submit" value="Créer"><a href="@{Application.index()}">Annuler</a></p>
-</form>
+<div class="container col-sm-offset-4 col-sm-4 col-lg-offset-4 col-lg-4 clearfix">
+    #{ifErrors}
+    <h1>Erreur lors de la création du compte !</h1>
+    #{/ifErrors}
+
+    <form action="@{Application.enregistrerNouveauClient()}" method="post">
+        <h2>Créer mon compte</h2>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon" id="basic-addon1">Nom</span>
+            <input class="form-control" type="text" name="nom">
+            <span class="error">#{error 'nom' /}</span>
+        </div>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon" id="basic-addon2">Prénom</span>
+            <input class="form-control" type="text" name="prenom">
+            <span class="error">#{error 'prenom' /}</span>
+        </div>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon" id="basic-addon3">Email</span>
+            <input class="form-control" type="text" name="email">
+            <span class="error">#{error 'email' /}</span>
+        </div>
+        <div class="input-group input-group-md">
+            <span class="input-group-addon" id="basic-addon4">Mot de passe</span>
+            <input class="form-control" type="password" name="motDePasse">
+            <span class="error">#{error 'motDePasse' /}</span>
+        </div>
+        <div class="pull-left input-group input-group-md">
+            <input class="btn btn-primary" type="submit" value="Créer">
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-warning" href="@{secure.Secure.login()}">Annuler</a>
+        </div>
+    </form>
+</div>

@@ -11,10 +11,12 @@ GET     /logout/?                                                               
 GET     /                                                                          Application.index
 GET     /produit/{idProduit}                                                       Application.detailProduit
 GET     /presentation/?                                                            Application.presentation
-POST     /presentation/async-message                                               Application.getAsyncPresentationMessage
+POST    /presentation/async-message                                                Application.getAsyncPresentationMessage
+GET     /aPropos/?                                                                 Application.aPropos
+GET     /contact/?                                                                 Application.contact
 
 # Panier
-GET     /panier                                                                    Panier.voirMonPanier
+GET     /panier/?                                                                  Panier.voirMonPanier
 GET     /panier/ajouter/{idProduit}                                                Panier.ajouterAuPanier
 GET     /panier/modifier/{idProduit}/quantite/{quantite}                           Panier.modifierQuantite
 POST    /panier/modifier/quantite                                                  Panier.modifierQuantite

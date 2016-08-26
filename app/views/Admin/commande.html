@@ -1,14 +1,67 @@
 #{extends 'main.html' /}
 #{set title:'Admin' /}
 
-<a href="@{Admin.index()}">Retour</a>
+<ol class="breadcrumb">
+    <li>
+        <a href="@{Application.index()}">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+    <li>
+        <a href="@{Admin.index()}">
+            <span class="glyphicon glyphicon-font"></span>
+        </a>
+    </li>
+    <li>
+        <a href="@{Admin.commandes()}">
+            liste commandes
+        </a>
+    </li>
+    <li class="active">${commande.date.toString("dd/MM/YY HH:mm")}</li>
+</ol>
 
-<p>${commande.date.toString("dd/MM/YYYY HH:mm")}</p>
-<p><a href="@{Admin.client(commande.client.id)}">${commande.client.nom} ${commande.client.prenom}</a></p>
-<p>${commande.montant} €</p>
+<div class="container">
+    <h3>ID commande : ${commande.id}</h3>
+    <blockquote>
+        <p>Date : ${commande.date.toString("dd/MM/YYYY HH:mm")}</p>
+        <p>Client :
+            <a href="@{Admin.client(commande.client.id)}">${commande.client.nom} ${commande.client.prenom}</a>
+        </p>
+        <p>Montant : ${commande.montant} €</p>
+    </blockquote>
 
-<ul>
-#{list commande.produits, as:'produitCommande'}
-    <li><a href="@{Admin.produit(produitCommande.produit.id)}">${produitCommande.produit.nom}</a> x ${produitCommande.quantite}, PU : ${produitCommande.prixUnitaire} €, montant : ${(produitCommande.prixUnitaire * produitCommande.quantite).format("0.##")} €</li>
-#{/list}
-</ul>
+    <div class="panel panel-default">
+        <div class="panel-heading"> Liste des produits commandés </div>
+        <table class="table table-condensed">
+            <tr>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Prix unitaire (€)</th>
+                <th>sous total (€)</th>
+            </tr>
+            #{list commande.produits, as:'produitCommande'}
+            <tr>
+                <td>
+                    <a href="@{Admin.produit(produitCommande.produit.id)}">${produitCommande.produit.nom}</a>
+                </td>
+                <td>
+                    ${produitCommande.quantite}
+                </td>
+                <td>
+                    ${produitCommande.prixUnitaire}
+                </td>
+                <td>
+                    ${(produitCommande.prixUnitaire * produitCommande.quantite).format("0.##")}
+                </td>
+            </tr>
+            #{/list}
+            <div class="table-striped">
+                <td></td>
+                <td></td>
+                <td><strong>TOTAL</strong> </td>
+                <td><strong>${commande.montant} €</strong></td>
+            </div>
+        </table>
+    </div>
+
+</div>

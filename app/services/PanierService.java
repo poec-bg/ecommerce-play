@@ -11,7 +11,6 @@ import services.db.DBService;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -66,7 +65,7 @@ public class PanierService {
                 panier.date = new DateTime(resultPanier.getTimestamp("date"));
                 panier.produits = new ArrayList<>();
 
-                if (panier.date.isBefore(DateService.get().now().minusMinutes(15))) {
+                if (panier.date.isBefore(DateService.get().now().minusMinutes(90))) {
                     invalider(panier);
                 } else {
                     Statement requeteProduitPanier = DBService.get().getConnection().createStatement();
