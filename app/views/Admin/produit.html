@@ -20,7 +20,7 @@
     <li class="active">${produit.nom}</li>
 </ol>
 
-<div class="container">
+<div class="container clearfix">
     <div class="panel panel-primary ">
         <div class="panel-heading">
             <h3>${produit.nom}</h3>
@@ -33,5 +33,8 @@
         <div class="panel-footer">
             <span>${produit.prixUnitaire} €</span>
         </div>
+    </div>
+    <div class="center-block">
+        <a class="btn btn-danger" href="@{Admin.supprimerProduit(produit)}">Supprimer</a>
     </div>
 </div>

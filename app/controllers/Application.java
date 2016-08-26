@@ -34,7 +34,7 @@ public class Application extends Controller {
         render();
     }
 
-    public static void enregistrerNouveauClient(@Required String nom, @Required String prenom, @Required @Email String email, @Required String motDePasse) throws Throwable {
+    public static void enregistrerNouveauClient(@Required String nom, @Required String prenom, @Required @Email String email, @Required String motDePasse, @Required String adressePostale, @Required String telephone) throws Throwable {
         if (validation.hasErrors()) {
             params.flash(); // add http parameters to the flash scope
             validation.keep(); // keep the errors for the next request
@@ -43,7 +43,7 @@ public class Application extends Controller {
 
         try {
             Client client = ClientService.get().creer(email, motDePasse);
-            ClientService.get().modifier(client, nom, prenom, null, null);
+            ClientService.get().modifier(client, nom, prenom, adressePostale, telephone);
             ClientService.get().enregistrer(client);
         } catch (InvalidArgumentException | MetierException e) {
             error(e);

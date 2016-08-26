@@ -88,6 +88,14 @@ public class ProduitService {
             throw new InvalidArgumentException(new String[]{"Le produit ne peut être null"});
         }
         produit.isSupprime = true;
+        try {
+            PreparedStatement preparedStatement = DBService.get().getConnection().prepareStatement("UPDATE Produit SET `isSupprime` = ? WHERE `id` =  ?");
+            preparedStatement.setBoolean(1, produit.isSupprime);
+            preparedStatement.setString(2, produit.id);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void categoriser(Produit produit, String categorie) {
@@ -98,7 +106,7 @@ public class ProduitService {
         List<Produit> produitsDb = new ArrayList<>();
         try {
             Statement requete = DBService.get().getConnection().createStatement();
-            ResultSet result = requete.executeQuery("SELECT * FROM Produit ORDER BY nom");
+            ResultSet result = requete.executeQuery("SELECT * FROM Produit WHERE isSupprime = '0' ORDER BY nom");
             while (result.next()) {
                 Produit produit = new Produit();
                 produit.id = result.getString("id");

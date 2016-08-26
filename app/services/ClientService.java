@@ -76,6 +76,7 @@ public class ClientService {
         client.email = email;
         client.motDePasse = encodePassword(motDePasse);
         client.role = EUserRole.CLIENT;
+        client.isSupprime = false;
         return client;
     }
 
@@ -102,13 +103,6 @@ public class ClientService {
             client.telephone = telephone;
         }
 
-    }
-
-    public void supprimer(Client client) throws InvalidArgumentException {
-        if (client == null) {
-            throw new InvalidArgumentException(new String[]{"Le client ne peut être null"});
-        }
-        client.isSupprime = true;
     }
 
     public Client fusionner(Client client1, Client client2) throws InvalidArgumentException {
@@ -176,7 +170,7 @@ public class ClientService {
         List<Client> clients = new ArrayList<>();
         try {
             Statement requete = DBService.get().getConnection().createStatement();
-            ResultSet result = requete.executeQuery("SELECT * FROM Client");
+            ResultSet result = requete.executeQuery("SELECT * FROM Client WHERE isSupprime = '0' ORDER BY nom");
             while (result.next()) {
                 Client client = new Client();
                 client.id = result.getString("id");
@@ -187,6 +181,7 @@ public class ClientService {
                 client.telephone = result.getString("telephone");
                 client.role = EUserRole.valueOf(result.getString("role"));
                 client.isSupprime = result.getBoolean("isSupprime");
+                client.motDePasse = result.getString("motDePasse");
                 clients.add(client);
             }
         } catch (SQLException e) {
@@ -207,6 +202,21 @@ public class ClientService {
             preparedStatement.setString(7, client.telephone);
             preparedStatement.setString(8, client.role.name());
             preparedStatement.setBoolean(9, client.isSupprime);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void supprimer(Client client) throws InvalidArgumentException {
+        if (client == null) {
+            throw new InvalidArgumentException(new String[]{"Le client ne peut être null"});
+        }
+        client.isSupprime = true;
+        try {
+            PreparedStatement preparedStatement = DBService.get().getConnection().prepareStatement("UPDATE Client SET `isSupprime` = ? WHERE `id` =  ?");
+            preparedStatement.setBoolean(1, client.isSupprime);
+            preparedStatement.setString(2, client.id);
             preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -236,6 +246,8 @@ public class ClientService {
                 client.telephone = result.getString("telephone");
                 client.role = EUserRole.valueOf(result.getString("role"));
                 client.isSupprime = result.getBoolean("isSupprime");
+                client.motDePasse = result.getString("motDePasse");
+
                 return client;
             }
         } catch (SQLException e) {
@@ -269,6 +281,8 @@ public class ClientService {
                 client.telephone = result.getString("telephone");
                 client.role = EUserRole.valueOf(result.getString("role"));
                 client.isSupprime = result.getBoolean("isSupprime");
+                client.motDePasse = result.getString("motDePasse");
+
                 return client;
             }
         } catch (SQLException e) {

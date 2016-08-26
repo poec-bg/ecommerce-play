@@ -82,7 +82,7 @@ public class Admin extends Controller {
         render();
     }
 
-    public static void enregistrerNouveauClient(@Required String nom, @Required String prenom, @Required @Email String email) {
+    public static void enregistrerNouveauClient(@Required String nom, @Required String prenom, @Required @Email String email, String adressePostale, String telephone) {
 
         if (validation.hasErrors()) {
             params.flash(); // add http parameters to the flash scope
@@ -92,12 +92,30 @@ public class Admin extends Controller {
 
         try {
             Client client = ClientService.get().creer(email, email);
-            ClientService.get().modifier(client, nom, prenom, null, null);
+            ClientService.get().modifier(client, nom, prenom, adressePostale, telephone);
             ClientService.get().enregistrer(client);
         } catch (InvalidArgumentException | MetierException e) {
             error(e);
         }
         clients();
+    }
+
+    public static void supprimerClient(@Required Client client) {
+        try {
+            ClientService.get().supprimer(client);
+        } catch (InvalidArgumentException e) {
+            error(e);
+        }
+        clients();
+    }
+
+    public static void supprimerProduit(@Required Produit produit) {
+        try {
+            ProduitService.get().supprimer(produit);
+        } catch (InvalidArgumentException e) {
+            error(e);
+        }
+        produits();
     }
 
     public static void commandes() {

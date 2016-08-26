@@ -12,6 +12,6 @@ public class Client {
     public String adressePostale;
     public String telephone;
     public EUserRole role;
-    public boolean isSupprime = false;
+    public boolean isSupprime;
 
 }
