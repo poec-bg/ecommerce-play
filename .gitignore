@@ -24,8 +24,8 @@ modules
 cobertura.ser
 atlassian-ide-plugin.xml
 #!conf/sql
-!app/exceptions
+#!app/exceptions
 #!app/model
-#!app/services
-#!app/validators
+!app/services/db
+!app/validators
 !public/lib
