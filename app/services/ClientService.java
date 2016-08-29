@@ -71,12 +71,12 @@ public class ClientService {
             e.printStackTrace();
         }
 
-        Client client = new Client();
-        client.id = UUID.randomUUID().toString();
-        client.email = email;
-        client.motDePasse = encodePassword(motDePasse);
-        client.role = EUserRole.CLIENT;
-        client.isSupprime = false;
+        Client client = new Client(UUID.randomUUID().toString(), email, encodePassword(motDePasse), null, null, null, null, EUserRole.CLIENT, false);
+//        client.id = UUID.randomUUID().toString();
+//        client.email = email;
+//        client.motDePasse = encodePassword(motDePasse);
+//        client.role = EUserRole.CLIENT;
+//        client.isSupprime = false;
         return client;
     }
 
@@ -175,16 +175,25 @@ public class ClientService {
             Statement requete = DBService.get().getConnection().createStatement();
             ResultSet result = requete.executeQuery("SELECT * FROM Client WHERE isSupprime = '0' ORDER BY nom");
             while (result.next()) {
-                Client client = new Client();
-                client.id = result.getString("id");
-                client.email = result.getString("email");
-                client.nom = result.getString("nom");
-                client.prenom = result.getString("prenom");
-                client.adressePostale = result.getString("adressePostale");
-                client.telephone = result.getString("telephone");
-                client.role = EUserRole.valueOf(result.getString("role"));
-                client.isSupprime = result.getBoolean("isSupprime");
-                client.motDePasse = result.getString("motDePasse");
+                Client client = new Client(
+                        result.getString("id"),
+                        result.getString("email"),
+                        result.getString("motDePasse"),
+                        result.getString("nom"),
+                        result.getString("prenom"),
+                        result.getString("adressePostale"),
+                        result.getString("telephone"),
+                        EUserRole.valueOf(result.getString("role")),
+                        result.getBoolean("isSupprime"));
+//                client.id = result.getString("id");
+//                client.email = result.getString("email");
+//                client.nom = result.getString("nom");
+//                client.prenom = result.getString("prenom");
+//                client.adressePostale = result.getString("adressePostale");
+//                client.telephone = result.getString("telephone");
+//                client.role = EUserRole.valueOf(result.getString("role"));
+//                client.isSupprime = result.getBoolean("isSupprime");
+//                client.motDePasse = result.getString("motDePasse");
                 clients.add(client);
             }
         } catch (SQLException e) {
@@ -255,17 +264,16 @@ public class ClientService {
             Statement requete = DBService.get().getConnection().createStatement();
             ResultSet result = requete.executeQuery("SELECT * FROM Client WHERE id='" + idClient + "'");
             if (result.next()) {
-                Client client = new Client();
-                client.id = result.getString("id");
-                client.email = result.getString("email");
-                client.nom = result.getString("nom");
-                client.prenom = result.getString("prenom");
-                client.adressePostale = result.getString("adressePostale");
-                client.telephone = result.getString("telephone");
-                client.role = EUserRole.valueOf(result.getString("role"));
-                client.isSupprime = result.getBoolean("isSupprime");
-                client.motDePasse = result.getString("motDePasse");
-
+                Client client = new Client(
+                        result.getString("id"),
+                        result.getString("email"),
+                        result.getString("motDePasse"),
+                        result.getString("nom"),
+                        result.getString("prenom"),
+                        result.getString("adressePostale"),
+                        result.getString("telephone"),
+                        EUserRole.valueOf(result.getString("role")),
+                        result.getBoolean("isSupprime"));
                 return client;
             }
         } catch (SQLException e) {
@@ -290,17 +298,16 @@ public class ClientService {
             Statement requete = DBService.get().getConnection().createStatement();
             ResultSet result = requete.executeQuery("SELECT * FROM Client WHERE email='" + email + "'");
             if (result.next()) {
-                Client client = new Client();
-                client.id = result.getString("id");
-                client.email = result.getString("email");
-                client.nom = result.getString("nom");
-                client.prenom = result.getString("prenom");
-                client.adressePostale = result.getString("adressePostale");
-                client.telephone = result.getString("telephone");
-                client.role = EUserRole.valueOf(result.getString("role"));
-                client.isSupprime = result.getBoolean("isSupprime");
-                client.motDePasse = result.getString("motDePasse");
-
+                Client client = new Client(
+                        result.getString("id"),
+                        result.getString("email"),
+                        result.getString("motDePasse"),
+                        result.getString("nom"),
+                        result.getString("prenom"),
+                        result.getString("adressePostale"),
+                        result.getString("telephone"),
+                        EUserRole.valueOf(result.getString("role")),
+                        result.getBoolean("isSupprime"));
                 return client;
             }
         } catch (SQLException e) {
@@ -308,6 +315,30 @@ public class ClientService {
         }
 
         return null;
+    }
+
+    public List<Client> listerArchiveClient() {
+        List<Client> clientsArchive = new ArrayList<>();
+        try {
+            Statement requete = DBService.get().getConnection().createStatement();
+            ResultSet result = requete.executeQuery("SELECT * FROM Client WHERE isSupprime = '1' ORDER BY nom");
+            while (result.next()) {
+                Client clientArchive = new Client(
+                        result.getString("id"),
+                        result.getString("email"),
+                        result.getString("motDePasse"),
+                        result.getString("nom"),
+                        result.getString("prenom"),
+                        result.getString("adressePostale"),
+                        result.getString("telephone"),
+                        EUserRole.valueOf(result.getString("role")),
+                        result.getBoolean("isSupprime"));
+                clientsArchive.add(clientArchive);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return clientsArchive;
     }
 
     public void clear() {
