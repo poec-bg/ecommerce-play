@@ -78,6 +78,11 @@ public class Admin extends Controller {
         render(client);
     }
 
+    public static void clientsArchive() {
+        List<Client> clientsArchive = ClientService.get().listerArchiveClient();
+        render(clientsArchive);
+    }
+
     public static void creerNouveauClient() {
         render();
     }
@@ -92,7 +97,7 @@ public class Admin extends Controller {
 
         try {
             Client client = ClientService.get().creer(email, email);
-            ClientService.get().modifier(client, nom, prenom, adressePostale, telephone);
+            ClientService.get().modifier(client, nom, prenom, email, adressePostale, telephone);
             ClientService.get().enregistrer(client);
         } catch (InvalidArgumentException | MetierException e) {
             error(e);
@@ -103,6 +108,20 @@ public class Admin extends Controller {
     public static void supprimerClient(@Required Client client) {
         try {
             ClientService.get().supprimer(client);
+        } catch (InvalidArgumentException e) {
+            error(e);
+        }
+        clients();
+    }
+
+    public static void modifierClient(@Required Client client) {
+        render(client);
+    }
+
+    public static void enregistrerModifClient(@Required Client client, @Required String nom, @Required String prenom, @Required @Email String email, String adressePostale, String telephone) {
+        try {
+            ClientService.get().modifier(client, nom, prenom, email, adressePostale, telephone);
+            ClientService.get().enregistrer(client);
         } catch (InvalidArgumentException e) {
             error(e);
         }

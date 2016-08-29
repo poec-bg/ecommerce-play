@@ -23,19 +23,22 @@ POST    /panier/modifier/quantite                                               
 GET     /panier/retirer/{idProduit}                                                Panier.retirer
 
 # Admin
-GET     /admin                                                                     Admin.index
-GET     /admin/produits                                                            Admin.produits
+GET     /admin/?                                                                   Admin.index
+GET     /admin/produits/?                                                          Admin.produits
 GET     /admin/produits/nouveau                                                    Admin.creerNouveauProduit
 POST    /admin/produits/nouveau                                                    Admin.enregistrerNouveauProduit
-GET     /admin/clients                                                             Admin.clients
+GET     /admin/clients/?                                                           Admin.clients
 GET     /admin/clients/nouveau                                                     Admin.creerNouveauClient
 POST    /admin/clients/nouveau                                                     Admin.enregistrerNouveauClient
+GET     /admin/client/modifier/{id}                                                Admin.modifierClient
+POST    /admin/client/modifier/{id}                                                Admin.enregistrerClient
+GET     /admin/clientsArchive                                                      Admin.clientsArchive
 
 # Ignore favicon requests
 GET     /favicon.ico                                                               404
 
 # Map static resources from the /app/public folder to the /public path
-GET     /public/                                                                   staticDir:public
+GET     /public                                                                  staticDir:public
 
 # Catch all
 *       /{controller}/{action}                                                     {controller}.{action}

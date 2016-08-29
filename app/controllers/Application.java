@@ -43,7 +43,7 @@ public class Application extends Controller {
 
         try {
             Client client = ClientService.get().creer(email, motDePasse);
-            ClientService.get().modifier(client, nom, prenom, adressePostale, telephone);
+            ClientService.get().modifier(client, nom, prenom, email, adressePostale, telephone);
             ClientService.get().enregistrer(client);
         } catch (InvalidArgumentException | MetierException e) {
             error(e);

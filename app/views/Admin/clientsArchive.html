@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Admin' /}
+#{set title:'Admin - archive clients' /}
 
 <ol class="breadcrumb">
     <li>
@@ -12,21 +12,27 @@
             <span class="glyphicon glyphicon-font"></span>
         </a>
     </li>
-    <li class="active">liste clients</li>
+    <li>
+        <a href="@{Admin.clients()}">
+            <span class="">Liste des clients</span>
+        </a>
+    </li>
+    <li class="active">Archive clients</li>
 </ol>
 
 
-<div class="container clearfix">
+<div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading"> Liste des clients </div>
+        <div class="panel-heading"> Liste des clients archivés</div>
+        #{if clientsArchive && clientsArchive.size() > 0}
         <table class="table">
             <tr>
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Email</th>
+                <th>Statut</th>
             </tr>
-            #{if clients && clients.size() > 0}
-            #{list clients, as:'client'}
+            #{list clientsArchive, as:'client'}
             <tr>
                 <td>
                     <a href="@{Admin.client(client.id)}">${client.prenom}</a>
@@ -37,15 +43,19 @@
                 <td>
                     <a href="@{Admin.client(client.id)}">${client.email}</a>
                 </td>
+                <td>
+                    <span class="alert-danger"><em>supprimé</em></span>
+                </td>
             </tr>
             #{/list}
-            #{/if}
-            #{else}
-            <p><i>Aucun client</i></p>
-            #{/else}
         </table>
+
+        #{/if}
+        #{else}
+            <div class="container">
+                <i>Aucun client</i>
+            </div>
+        #{/else}
     </div>
-    <a class="btn btn-primary pull-left" href="@{Admin.creerNouveauClient()}">Nouveau Client</a>
-    <a class="btn btn-default pull-right" href="@{Admin.clientsArchive()}">Archive Clients</a>
 </div>
 

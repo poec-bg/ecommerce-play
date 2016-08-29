@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Créer mon compte' /}
+#{set title:'Admin' /}
 
 <ol class="breadcrumb">
     <li>
@@ -8,53 +8,53 @@
         </a>
     </li>
     <li>
-        <a href="@{secure.Secure.login()}">Compte</a>
+        <a href="@{Admin.index()}">
+            <span class="glyphicon glyphicon-font"></span>
+        </a>
     </li>
-    <li class="active">Nouveaux</li>
+    <li>
+        <a href="@{Admin.clients()}">Liste des clients</a>
+    </li>
+    <li class="active">Modifier</li>
 </ol>
 
-<div class="container col-sm-offset-4 col-sm-4 col-lg-offset-4 col-lg-4 clearfix">
+<div class="container clearfix">
     #{ifErrors}
-    <h1>Erreur lors de la création du compte !</h1>
+    <h1>Try again !</h1>
     #{/ifErrors}
 
-    <form action="@{Application.enregistrerNouveauClient()}" method="post">
-        <h2>Créer mon compte</h2>
+    <form action="@{Admin.enregistrerModifClient(client, nom, prenom, email, adressePostale, telephone)}" method="post">
+        <h2>Modifier le client :</h2>
         <div class="input-group input-group-md">
             <span class="input-group-addon" id="basic-addon1">Nom</span>
-            <input class="form-control" type="text" name="nom">
+            <input class="form-control" type="text" name="nom" value=${client.nom}>
             <span class="error">#{error 'nom' /}</span>
         </div>
         <div class="input-group input-group-md">
             <span class="input-group-addon" id="basic-addon2">Prénom</span>
-            <input class="form-control" type="text" name="prenom">
+            <input class="form-control" type="text" name="prenom" value=${client.prenom}>
             <span class="error">#{error 'prenom' /}</span>
         </div>
         <div class="input-group input-group-md">
-            <span class="input-group-addon" id="basic-addon3">Email</span>
-            <input class="form-control" type="text" name="email">
+            <span class="input-group-addon" id="basic-addon3">Email :</span>
+            <input class="form-control" type="email" name="email" value=${client.email}>
             <span class="error">#{error 'email' /}</span>
         </div>
         <div class="input-group input-group-md">
             <span class="input-group-addon" id="basic-addon4">Adresse Postale</span>
-            <input class="form-control" type="text" name="adressePostale">
+            <input class="form-control" type="text" name="adressePostale" value=${client.adressePostale}>
             <span class="error">#{error 'adressePostale' /}</span>
         </div>
         <div class="input-group input-group-md">
             <span class="input-group-addon" id="basic-addon5">Téléphone</span>
-            <input class="form-control" type="text" name="telephone">
+            <input class="form-control" type="text" name="telephone" value=${client.telephone}>
             <span class="error">#{error 'telephone' /}</span>
         </div>
-        <div class="input-group input-group-md">
-            <span class="input-group-addon" id="basic-addon6">Mot de passe</span>
-            <input class="form-control" type="password" name="motDePasse">
-            <span class="error">#{error 'motDePasse' /}</span>
-        </div>
         <div class="pull-left input-group input-group-md">
-            <input class="btn btn-primary" type="submit" value="Créer">
+            <input type="submit" value="Enregistrer les modifications" class="btn btn-primary">
         </div>
         <div class="pull-right">
-            <a class="btn btn-warning" href="@{secure.Secure.login()}">Annuler</a>
+            <a class="btn btn-warning" href="@{Admin.clients()}">Annuler</a>
         </div>
     </form>
 </div>
